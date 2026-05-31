@@ -10,6 +10,7 @@ Use these source levels:
 
 - `official_pubg_map_page`: use for map existence, key landmarks, and official major features.
 - `official_patch_notes`: use when a patch changes items, vehicles, secret rooms, loot, map mechanics, or rotations.
+- `steam_community_guide`: useful community guide with stated manual verification dates; acceptable for medium confidence until sampled in PC live.
 - `manual_pc_live_verification`: best source for vehicle spawn points, secret room entrances, loot route quality, and practical drop risk.
 - `trusted_community_map`: acceptable for first pass if the URL/source is stored and later spot-checked in game.
 - `common_player_knowledge_seed`: temporary seed only. Do not treat as production accurate.
@@ -36,6 +37,8 @@ These official pages do not provide complete live coordinates for every vehicle 
 
 - HotdropWarrior Reddit secret room map collection:
   https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/
+- Steam guide, UPDATED: The Location of the Secret Rooms:
+  https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048
 - Reddit all secret rooms/security rooms/bear caves/labs source index:
   https://www.reddit.com/r/PUBATTLEGROUNDS/comments/1e4aoqd/maps_for_all_secret_rooms_security_rooms_bear/
 - Detailed notes are tracked in [secret-room-source-research.md](secret-room-source-research.md).
@@ -72,6 +75,9 @@ Priority 1:
 - Taego: Terminal, Palace, School, Ho San, Shipyard
 - Vikendi: Observatory, Glacier/Lab Camp, Train Station, Lumber Yard, Cave, plus known Secret Rooms
 - Rondo: Jadena City, Stadium, NEOX Factory, Rin Jiang, Yu Lin, Mey Ran
+- Deston: Lodge, Arena, Assembly, Hydroelectric Dam, plus security-room floor checks
+- Paramo: Capaco, Lab, Helipad, Atahul, Makalpa
+- Karakin: Bahr Sahir, Al Habar, Bashara, Hadiqa Nemo, Al Hayik, tunnel routes
 
 Priority 2:
 

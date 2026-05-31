@@ -139,14 +139,14 @@
       ],
       "requirements": "World-spawned Security Key.",
       "loot": "High-tier Vikendi Secret Room loot. Update 40.2 lists Jammer Pack, Emergency Pickup, Folded Shield, Mountain Bike, Mortar, All-In-One Repair Kit, Stun Gun, Zipline Gun, and Emergency Cover Flare as added Secret Room spawn items.",
-      "notes": "Pink secret-room markers transcribed from the user-provided Letrix/HotdropWarrior community map image. Exact doors should still be checked in current PC live or PUBG Bridge.",
+      "notes": "Bunker markers transcribed from community images and corroborated by the newer Steam guide. Exact doors should still be checked in PC live or PUBG Bridge.",
       "verification": {
-        "source": "official_patch_notes_and_trusted_community_map",
+        "source": "official_patch_notes_and_steam_community_guide",
         "confidence": "medium",
-        "last_verified": "2026-05-31",
-        "patch": "Update 40.2 source research",
-        "source_url": "https://pubg.com/en/news/4552",
-        "notes": "Existence and Security Key requirement are official. Marker callouts are transcribed from user-provided community image and still need live verification."
+        "last_verified": "2026-05-25",
+        "patch": "Steam guide May 2026 plus official Update 21.2/40.2",
+        "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+        "notes": "Existence and Security Key requirement are official. Steam guide says locations were manually verified in Aug-Oct 2025."
       }
     },
     {

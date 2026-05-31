@@ -36,6 +36,32 @@ class SearchService:
         "keycard",
         "key card",
         "security",
+        "security room",
+        "bear cave",
+        "cave",
+        "tunnel",
+        "underground",
+        "bunker",
+        "basement",
+        "mine",
+        "abandoned mine",
+        "pagoda",
+        "round door",
+        "temple",
+        "pillar truck",
+        "jamila",
+        "ห้องลับ",
+        "คีย์",
+        "คีย์การ์ด",
+        "กุญแจ",
+        "ถ้ำ",
+        "อุโมงค์",
+    )
+    SECRET_LOOKUP_STOPWORDS = (
+        "secret",
+        "secret room",
+        "keycard",
+        "key card",
         "ห้องลับ",
         "คีย์",
         "คีย์การ์ด",
@@ -102,7 +128,7 @@ class SearchService:
         return self.map_service.find_locations(query, max_results=max_results)
 
     def secret(self, query: str, *, max_results: int = 8) -> list[SecretRoomMatch]:
-        query = self._strip_keywords(query, self.SECRET_KEYWORDS)
+        query = self._strip_keywords(query, self.SECRET_LOOKUP_STOPWORDS)
         return self.map_service.find_secret_rooms(query, max_results=max_results)
 
     def drop(self, query: str) -> DropLookup:

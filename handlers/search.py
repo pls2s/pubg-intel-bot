@@ -30,7 +30,7 @@ async def natural_language_search(
         return
 
     if text.startswith("/"):
-        await answer_text(message, "Unknown command. Use /help to see available commands.")
+        await answer_text(message, "ไม่รู้จักคำสั่งนี้ พิมพ์ /help เพื่อดูคำสั่งที่ใช้ได้")
         return
 
     intent = search_service.infer_intent(text)
@@ -41,28 +41,28 @@ async def natural_language_search(
         response = (
             format_vehicle_results(matches)
             if matches
-            else format_not_found("vehicle spawn", text, search_service.suggestions(text))
+            else format_not_found("จุดเกิดรถ", text, search_service.suggestions(text))
         )
     elif intent == "secret":
         matches = search_service.secret(text)
         response = (
             format_secret_results(matches)
             if matches
-            else format_not_found("secret room", text, search_service.suggestions(text))
+            else format_not_found("ห้องลับ/จุดพิเศษ", text, search_service.suggestions(text))
         )
     elif intent == "loot":
         matches = search_service.loot(text)
         response = (
             format_loot_results(matches)
             if matches
-            else format_not_found("loot", text, search_service.suggestions(text))
+            else format_not_found("ข้อมูล loot", text, search_service.suggestions(text))
         )
     elif intent == "drop":
         lookup = search_service.drop(text)
         response = (
             format_drop_recommendation(lookup.map_data, lookup.risk_hint)
             if lookup.map_data
-            else format_not_found("drop recommendation", text, search_service.suggestions(text))
+            else format_not_found("คำแนะนำจุดลง", text, search_service.suggestions(text))
         )
     else:
         matches = search_service.overview(text)
@@ -70,7 +70,7 @@ async def natural_language_search(
         response = (
             "\n\n".join(format_map_overview(match) for match in matches)
             if matches
-            else format_not_found("map intel", text, search_service.suggestions(text))
+            else format_not_found("ข้อมูลแผนที่", text, search_service.suggestions(text))
         )
 
     await sqlite_service.log_query(

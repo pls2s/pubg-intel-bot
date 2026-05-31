@@ -131,7 +131,44 @@
       "description": "Quiet coastal town with bridge control value."
     }
   ],
-  "secret_rooms": [],
+  "secret_rooms": [
+    {
+      "name": "Miramar Secret Rooms",
+      "aliases": ["secret room", "key room", "mine", "abandoned mine", "ห้องลับ"],
+      "locations": [
+        "Crater Fields northwest abandoned mine",
+        "La Cobreria southwest ridge",
+        "South of Oasis / north of Water Treatment",
+        "Northwest of Cruz del Valle",
+        "North of Tierra Bronca",
+        "West of El Pozo, near Alcantara road",
+        "Southwest of El Pozo, west of Monte Nuevo",
+        "West of Hacienda del Patron / north of Pecado",
+        "West of Truck Stop / south of El Azahar",
+        "East of Monte Nuevo, north of Pecado hills",
+        "West of Chumacera",
+        "Northwest of Los Leones, south of Chumacera",
+        "North of Prison",
+        "South of Prison",
+        "South coast west of Partona",
+        "North of Los Leones",
+        "West of Puerto Paraiso",
+        "North of Impala",
+        "East of Impala, coastal ridge"
+      ],
+      "requirements": "Miramar Secret Room Key.",
+      "loot": "High-value secret-room loot inside abandoned mine entrances; verify current live loot tables before treating item contents as guaranteed.",
+      "notes": "Callouts transcribed from the Steam guide map updated in May 2026. The guide says locations were manually verified in Aug-Oct 2025 and May 2026.",
+      "verification": {
+        "source": "steam_community_guide",
+        "confidence": "medium",
+        "last_verified": "2026-05-25",
+        "patch": "Steam guide May 2026",
+        "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+        "notes": "Guide-level verification is newer than the previous Reddit image source. Promote to high only after PC live/PUBG Bridge spot checks."
+      }
+    }
+  ],
   "drops": {
     "verification": {
       "source": "common_player_knowledge_seed",

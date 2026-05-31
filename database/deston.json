@@ -1,12 +1,12 @@
 {
   "map": "Deston",
   "verification": {
-    "source": "trusted_community_map",
+    "source": "steam_community_guide",
     "confidence": "medium",
-    "last_verified": "2026-05-31",
-    "patch": "community image transcription",
-    "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
-    "notes": "Secret/security room and pillar truck callouts transcribed from user-provided Letrix/HotdropWarrior community image. Needs current PC live verification."
+    "last_verified": "2026-05-25",
+    "patch": "Steam guide May 2026",
+    "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+    "notes": "Security-room and truck callouts corroborated by Steam guide. Needs PC live/PUBG Bridge spot checks before high confidence."
   },
   "aliases": ["deston", "เดสตัน"],
   "locations": [
@@ -77,12 +77,12 @@
       "loot": "High-tier security-room loot, special items, armor, meds, weapons, and utility depending on current patch.",
       "notes": "The source image marks room access types: up, down, roof, and mixed-level rooms. Lodge has many individual room markers, so use the image or live verification for exact room-by-room routing.",
       "verification": {
-        "source": "trusted_community_map",
+        "source": "steam_community_guide",
         "confidence": "medium",
-        "last_verified": "2026-05-31",
-        "patch": "community image transcription",
-        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
-        "notes": "Transcribed from user-provided Deston community map image; exact floors and doors need current PC live verification."
+        "last_verified": "2026-05-25",
+        "patch": "Steam guide May 2026",
+        "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+        "notes": "Steam guide says locations were manually verified in Aug-Oct 2025. Exact floors and doors still need spot checks."
       }
     },
     {
@@ -106,12 +106,12 @@
       "loot": "Pillar truck route/loot objective, not a locked room.",
       "notes": "Blue markers transcribed from the supplied Deston image.",
       "verification": {
-        "source": "trusted_community_map",
+        "source": "steam_community_guide",
         "confidence": "medium",
-        "last_verified": "2026-05-31",
-        "patch": "community image transcription",
-        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
-        "notes": "Use as route guidance until verified in current PC live."
+        "last_verified": "2026-05-25",
+        "patch": "Steam guide May 2026",
+        "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+        "notes": "Use as route guidance until verified in PC live."
       }
     }
   ],

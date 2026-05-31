@@ -28,12 +28,12 @@ async def main() -> None:
     bot = Bot(token=settings.bot_token)
     await bot.set_my_commands(
         [
-            BotCommand(command="start", description="Open PUBG Intel Bot"),
-            BotCommand(command="help", description="Show commands and examples"),
-            BotCommand(command="vehicle", description="Find vehicle spawn locations"),
-            BotCommand(command="secret", description="Find secret room locations"),
-            BotCommand(command="loot", description="Get loot intelligence"),
-            BotCommand(command="drop", description="Get drop recommendations"),
+            BotCommand(command="start", description="เปิด PUBG Intel Bot"),
+            BotCommand(command="help", description="ดูคำสั่งและตัวอย่าง"),
+            BotCommand(command="vehicle", description="ค้นหาจุดเกิดรถ"),
+            BotCommand(command="secret", description="ค้นหาห้องลับ/จุดพิเศษ"),
+            BotCommand(command="loot", description="ดูข้อมูล loot"),
+            BotCommand(command="drop", description="แนะนำจุดลง"),
         ]
     )
     dp = Dispatcher()

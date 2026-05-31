@@ -32,7 +32,7 @@ async def secret_command(
     response = (
         format_secret_results(matches)
         if matches
-        else format_not_found("secret room", query, search_service.suggestions(query))
+        else format_not_found("ห้องลับ/จุดพิเศษ", query, search_service.suggestions(query))
     )
 
     await sqlite_service.log_query(

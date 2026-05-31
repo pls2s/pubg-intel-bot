@@ -123,25 +123,47 @@ class MapService:
             key for key, score in map_scores.items() if score >= 0.86
         }
 
-        matches: list[SecretRoomMatch] = []
+        candidates: list[tuple[MapData, SecretRoomMatch, float, float]] = []
         for map_data in self.maps.values():
             if strong_map_matches and map_data.key not in strong_map_matches:
                 continue
 
             map_score = map_scores[map_data.key]
-            map_matched = map_score >= 0.86
-
             for secret_room in map_data.secret_rooms:
                 secret_score = max(similarity(query, term) for term in secret_room.searchable_terms)
-                score = max(secret_score, min(map_score, 0.8) if map_matched else 0.0)
-                if score >= 0.50:
-                    matches.append(
+                candidates.append(
+                    (
+                        map_data,
                         SecretRoomMatch(
                             map_data=map_data,
                             secret_room=secret_room,
-                            score=score,
-                        )
+                            score=secret_score,
+                        ),
+                        map_score,
+                        secret_score,
                     )
+                )
+
+        has_specific_room_match = any(secret_score >= 0.68 for _, _, _, secret_score in candidates)
+
+        matches: list[SecretRoomMatch] = []
+        for map_data, match, map_score, secret_score in candidates:
+            map_matched = map_score >= 0.86
+
+            if has_specific_room_match:
+                if secret_score >= 0.68:
+                    matches.append(match)
+                continue
+
+            score = max(secret_score, min(map_score, 0.8) if map_matched else 0.0)
+            if score >= 0.50:
+                matches.append(
+                    SecretRoomMatch(
+                        map_data=map_data,
+                        secret_room=match.secret_room,
+                        score=score,
+                    )
+                )
 
         matches.sort(key=lambda item: item.score, reverse=True)
         return matches[:max_results]

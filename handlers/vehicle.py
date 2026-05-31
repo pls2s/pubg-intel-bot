@@ -32,7 +32,7 @@ async def vehicle_command(
     response = (
         format_vehicle_results(matches)
         if matches
-        else format_not_found("vehicle spawn", query, search_service.suggestions(query))
+        else format_not_found("จุดเกิดรถ", query, search_service.suggestions(query))
     )
 
     await sqlite_service.log_query(

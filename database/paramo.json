@@ -1,12 +1,12 @@
 {
   "map": "Paramo",
   "verification": {
-    "source": "trusted_community_map",
+    "source": "steam_community_guide",
     "confidence": "medium",
-    "last_verified": "2026-05-31",
-    "patch": "community image transcription",
-    "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
-    "notes": "Secret room callouts transcribed from user-provided Letrix/HotdropWarrior community image. Paramo layout can rotate; verify in current live matches."
+    "last_verified": "2026-05-25",
+    "patch": "Steam guide May 2026",
+    "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+    "notes": "Secret room callouts corroborated by Steam guide. Paramo layout can rotate; verify in current live matches."
   },
   "aliases": ["paramo", "พาราโม"],
   "locations": [
@@ -81,12 +81,12 @@
       "loot": "High-value room loot depending on current Paramo live rules.",
       "notes": "Markers transcribed from the supplied Paramo image. Paramo can have dynamic terrain/layout behavior, so verify exact marker placement in current PC live.",
       "verification": {
-        "source": "trusted_community_map",
+        "source": "steam_community_guide",
         "confidence": "medium",
-        "last_verified": "2026-05-31",
-        "patch": "community image transcription",
-        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
-        "notes": "Useful callouts from user-provided community image; exact doors still need live verification."
+        "last_verified": "2026-05-25",
+        "patch": "Steam guide May 2026",
+        "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+        "notes": "Steam guide says locations were manually verified in Aug-Oct 2025 and May 2026. Exact doors still need live verification."
       }
     }
   ],

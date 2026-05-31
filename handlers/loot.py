@@ -32,7 +32,7 @@ async def loot_command(
     response = (
         format_loot_results(matches)
         if matches
-        else format_not_found("loot", query, search_service.suggestions(query))
+        else format_not_found("ข้อมูล loot", query, search_service.suggestions(query))
     )
 
     await sqlite_service.log_query(

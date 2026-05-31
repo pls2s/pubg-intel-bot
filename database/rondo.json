@@ -128,12 +128,38 @@
   ],
   "secret_rooms": [
     {
-      "name": "Rondo Secured Room",
-      "aliases": ["secured room", "locked room", "market key", "ห้องลับ"],
-      "locations": ["Jadena City market block", "Rin Jiang shop row", "Neox Factory office wing"],
-      "requirements": "Secured room key or market access item depending on match rules.",
-      "loot": "High-tier weapons, armor, utility, and attachments.",
-      "notes": "Rondo systems may change by patch; update this dataset after game updates."
+      "name": "Rondo Secret Rooms",
+      "aliases": ["secret room", "secured room", "locked room", "pagoda", "round door", "ห้องลับ"],
+      "locations": [
+        "Northwest forest above Jao Tin",
+        "Jao Tin north-side pagoda",
+        "North of Bamboo / west of the northern river",
+        "North bridge island west of Kun Xia",
+        "Hermay Town lake island area",
+        "Jao Tin city marker",
+        "Bamboo marker at Stadium north",
+        "Bamboo south roadside marker",
+        "West of Lo Hua Xing / east of the river road",
+        "Northwest of Mey Ran",
+        "North of Yun Gu",
+        "Fong Tun west marker",
+        "Long Tun / southwest Rondo marker",
+        "Central hills south of Test Track",
+        "South of Neox Factory",
+        "Ja Tin southeast island marker",
+        "North of Tin Long Garden"
+      ],
+      "requirements": "Rondo Secret Room Key.",
+      "loot": "High-value secret-room loot in pagodas with round doors; verify current live loot tables before treating item contents as guaranteed.",
+      "notes": "Callouts transcribed from the Steam guide map updated in May 2026. The guide says locations were manually verified in Aug-Oct 2025 and May 2026.",
+      "verification": {
+        "source": "steam_community_guide",
+        "confidence": "medium",
+        "last_verified": "2026-05-25",
+        "patch": "Steam guide May 2026",
+        "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+        "notes": "Newer and more complete than the previous seed data. Promote to high only after PC live/PUBG Bridge spot checks."
+      }
     }
   ],
   "drops": {

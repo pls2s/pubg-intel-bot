@@ -6,6 +6,42 @@ Last research pass: 2026-05-31.
 
 ## Sources Reviewed
 
+### Steam guide: UPDATED: The Location of the Secret Rooms
+
+URL: https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048
+
+Status: newer community guide, not official.
+
+Posted: 2025-10-08.
+
+Updated: 2026-05-25.
+
+What it provides:
+
+- Erangel, Miramar, Taego, Rondo, Deston, Vikendi, and Paramo secret/security room maps.
+- It explicitly says locations were manually verified in August-October 2025 and May 2026.
+- It documents key names per map:
+  - Erangel: Secret Basement Key
+  - Miramar: Secret Room Key
+  - Taego: Secret Key
+  - Rondo: Secret Room Key
+  - Deston: Security Key
+  - Vikendi: Security Key
+  - Paramo: Secret Room Key
+- It includes reference screenshots for room entrance types such as Miramar abandoned mines, Rondo pagodas with round doors, Deston trucks, Vikendi bunkers, and Paramo golden-door temples.
+
+Use in database:
+
+- Mark as `steam_community_guide` with `confidence=medium`.
+- It supersedes the older Reddit image set where the map exists in both sources, because it is explicitly updated in May 2026.
+- Promote individual locations to `confidence=high` only after PC live/custom match or PUBG Bridge verification.
+
+Integrated into JSON:
+
+- Added Miramar Secret Rooms from this guide.
+- Replaced Rondo seed secured-room data with Rondo Secret Rooms from this guide.
+- Upgraded Erangel, Taego, Deston, Vikendi, and Paramo source metadata to this guide where applicable.
+
 ### Reddit: HotdropWarrior secret room maps
 
 URL: https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/
@@ -192,3 +228,25 @@ confidence: medium
 ```bash
 python tools/validate_database.py --strict-useful
 ```
+
+## User-Provided Image Transcription
+
+The user supplied seven Letrix/HotdropWarrior-style map images in chat on 2026-05-31. These images were used as `trusted_community_map` source material with `confidence=medium`.
+
+Integrated into JSON:
+
+- Image 1: Erangel Secret Rooms, 15 readable marker callouts.
+- Image 2: Taego Secret Rooms, 15 readable marker callouts.
+- Image 3: Vikendi Security Rooms and Bear Caves, readable marker callouts.
+- Image 4: Deston Security Rooms and Pillar Trucks, added `database/deston.json`.
+- Image 5: Paramo Secret Rooms, added `database/paramo.json`.
+- Image 6: Karakin Tunnel Entrances and Jamila Buildings, added `database/karakin.json`.
+
+Not integrated as secret-room data:
+
+- Image 7: Sanhok Bootcamp drop-location image. It is useful tactical context, but it is not a secret-room/security-room map. Keep it for drop-route work instead of mixing it into `/secret`.
+
+Quality caveat:
+
+- The image markers were manually transcribed into human-readable callouts, not exact coordinates.
+- Promote individual locations to `confidence=high` only after PC live/custom match or PUBG Bridge verification.

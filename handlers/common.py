@@ -13,15 +13,15 @@ router = Router(name="common")
 
 HELP_TEXT = """PUBG Intel Bot
 
-Commands:
-/start - Open the bot
-/help - Show help
-/vehicle <location or map> - Vehicle spawn lookup
-/secret <map> - Secret room lookup
-/loot <location> - Loot intelligence
-/drop <map> - Drop recommendations
+คำสั่ง:
+/start - เปิดใช้งานบอท
+/help - ดูวิธีใช้
+/vehicle <สถานที่หรือแผนที่> - ค้นหาจุดเกิดรถ
+/secret <แผนที่> - ค้นหาห้องลับ/จุดพิเศษ
+/loot <สถานที่> - ดูข้อมูล loot และเส้นทางฟาร์ม
+/drop <แผนที่> - แนะนำจุดลง
 
-Examples:
+ตัวอย่าง:
 /vehicle pochinki
 /secret taego
 /loot school
@@ -43,7 +43,7 @@ async def start_command(message: Message, sqlite_service: SQLiteService) -> None
     )
     await answer_text(
         message,
-        "PUBG Intel Bot พร้อมช่วยหา vehicle, secret room, loot route และจุดลงในแต่ละแผนที่\n\n"
+        "PUBG Intel Bot พร้อมช่วยหาจุดเกิดรถ ห้องลับ เส้นทาง loot และจุดลงในแต่ละแผนที่\n\n"
         "พิมพ์ /help เพื่อดูตัวอย่างคำสั่ง",
     )
 

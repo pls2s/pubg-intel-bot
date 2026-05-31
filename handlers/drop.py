@@ -32,7 +32,7 @@ async def drop_command(
     response = (
         format_drop_recommendation(lookup.map_data, lookup.risk_hint)
         if lookup.map_data
-        else format_not_found("drop recommendation", query, search_service.suggestions(query))
+        else format_not_found("คำแนะนำจุดลง", query, search_service.suggestions(query))
     )
 
     await sqlite_service.log_query(

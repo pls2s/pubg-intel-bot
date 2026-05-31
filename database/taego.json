@@ -149,14 +149,14 @@
       ],
       "requirements": "Taego Secret Room Key.",
       "loot": "Mid to high-tier loot with possible Self-AED. Current official patch notes also list items such as All-In-One Repair Kit, Emergency Cover Flare, Emergency Support Flare, and Jammer Pack Lv.3 as possible Secret Room loot sources.",
-      "notes": "15 marker callouts transcribed from the user-provided Letrix/HotdropWarrior community map image. Exact doors should still be checked in current PC live or PUBG Bridge.",
+      "notes": "15 marker callouts transcribed from community images and corroborated by the newer Steam guide. Exact doors should still be checked in PC live or PUBG Bridge.",
       "verification": {
-        "source": "trusted_community_map_and_editorial_guide",
+        "source": "steam_community_guide_and_editorial_guide",
         "confidence": "medium",
-        "last_verified": "2026-05-31",
-        "patch": "Update 41.1 source research",
-        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
-        "notes": "Reddit correction and Dot Esports corroborate 15 rooms. Marker callouts are transcribed from user-provided community image and still need live verification."
+        "last_verified": "2026-05-25",
+        "patch": "Steam guide May 2026",
+        "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3583051048",
+        "notes": "Steam guide says locations were manually verified in Aug-Sep 2025; Dot Esports corroborates 15 rooms. Promote to high only after spot checks."
       }
     }
   ],

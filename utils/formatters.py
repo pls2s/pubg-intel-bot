@@ -3,26 +3,65 @@ from __future__ import annotations
 from models.map_data import LocationMatch, MapData, SecretRoomMatch, Verification
 
 
+VALUE_TH = {
+    "unknown": "ไม่ทราบ",
+    "low": "ต่ำ",
+    "low-medium": "ต่ำ-ปานกลาง",
+    "medium": "ปานกลาง",
+    "medium-high": "ปานกลาง-สูง",
+    "high": "สูง",
+    "very high": "สูงมาก",
+    "extreme": "สูงสุด",
+    "safe": "ปลอดภัย",
+    "hot": "เสี่ยงสูง",
+    "medium-risk": "เสี่ยงปานกลาง",
+}
+
+CONFIDENCE_TH = {
+    "high": "สูง",
+    "medium": "ปานกลาง",
+    "low": "ต่ำ",
+}
+
+
+def th_value(value: str) -> str:
+    return VALUE_TH.get(value.casefold(), value)
+
+
+def th_patch(value: str) -> str:
+    patches = {
+        "needs manual PC live verification": "รอการตรวจใน PC live",
+        "community image transcription": "ถอดข้อมูลจากรูป community",
+    }
+    return patches.get(value, value)
+
+
 def format_verification(verification: Verification) -> str:
     if verification.source == "unverified" and verification.confidence == "low":
-        return "Data quality: unverified"
-    return f"Data quality: {verification.label()}"
+        return "คุณภาพข้อมูล: ยังไม่ยืนยัน"
+
+    parts = [f"ความมั่นใจ={CONFIDENCE_TH.get(verification.confidence, verification.confidence)}"]
+    if verification.last_verified:
+        parts.append(f"ตรวจล่าสุด={verification.last_verified}")
+    if verification.patch:
+        parts.append(f"แพตช์/แหล่งอ้างอิง={th_patch(verification.patch)}")
+    return f"คุณภาพข้อมูล: {', '.join(parts)}"
 
 
 def usage(command: str, examples: list[str]) -> str:
-    lines = [f"Usage: /{command} <map or location>", "", "Examples:"]
+    lines = [f"วิธีใช้: /{command} <ชื่อแผนที่หรือสถานที่>", "", "ตัวอย่าง:"]
     lines.extend(f"- {example}" for example in examples)
     return "\n".join(lines)
 
 
 def format_not_found(topic: str, query: str, suggestions: list[str] | None = None) -> str:
     lines = [
-        f"I could not find {topic} data for: {query}",
-        "Try a map or location name, for example Pochinki, School, Erangel, Vikendi, or Taego.",
+        f"ไม่พบข้อมูล {topic} สำหรับ: {query}",
+        "ลองพิมพ์ชื่อแผนที่หรือสถานที่ เช่น Pochinki, School, Erangel, Vikendi, Taego, Miramar หรือ Rondo",
     ]
     if suggestions:
         lines.append("")
-        lines.append("Closest matches:")
+        lines.append("รายการที่ใกล้เคียง:")
         lines.extend(f"- {item}" for item in suggestions[:5])
     return "\n".join(lines)
 
@@ -32,21 +71,21 @@ def format_vehicle_results(matches: list[LocationMatch]) -> str:
     for match in matches:
         location = match.location
         lines = [
-            f"Vehicle spawns for {location.name} ({match.map_data.display_name})",
-            f"Danger: {location.danger}",
+            f"จุดเกิดรถ: {location.name} ({match.map_data.display_name})",
+            f"ความเสี่ยง: {th_value(location.danger)}",
             format_verification(location.verification),
         ]
         if location.description:
-            lines.append(f"Intel: {location.description}")
+            lines.append(f"ข้อมูล: {location.description}")
         lines.append("")
         for spawn in location.vehicles:
             lines.append(f"- {spawn.name}")
             if spawn.grid:
-                lines.append(f"  Grid: {spawn.grid}")
+                lines.append(f"  กริด: {spawn.grid}")
             if spawn.description:
                 lines.append(f"  {spawn.description}")
             if spawn.landmarks:
-                lines.append(f"  Landmarks: {', '.join(spawn.landmarks)}")
+                lines.append(f"  จุดสังเกต: {', '.join(spawn.landmarks)}")
             if spawn.verification.source != "unverified":
                 lines.append(f"  {format_verification(spawn.verification)}")
         blocks.append("\n".join(lines))
@@ -59,14 +98,14 @@ def format_secret_results(matches: list[SecretRoomMatch]) -> str:
     for match in matches:
         room = match.secret_room
         lines = [
-            f"Secret room: {room.name} ({match.map_data.display_name})",
-            f"Requirements: {room.requirements}",
-            f"Loot: {room.loot}",
+            f"ห้องลับ/จุดพิเศษ: {room.name} ({match.map_data.display_name})",
+            f"สิ่งที่ต้องใช้: {room.requirements}",
+            f"ของที่คาดว่าจะเจอ: {room.loot}",
             format_verification(room.verification),
         ]
         if room.notes:
-            lines.append(f"Notes: {room.notes}")
-        lines.append("Locations:")
+            lines.append(f"หมายเหตุ: {room.notes}")
+        lines.append("ตำแหน่ง:")
         lines.extend(f"- {item}" for item in room.locations)
         blocks.append("\n".join(lines))
 
@@ -79,24 +118,24 @@ def format_loot_results(matches: list[LocationMatch]) -> str:
         location = match.location
         loot = location.loot
         lines = [
-            f"Loot intel for {location.name} ({match.map_data.display_name})",
-            f"Quality: {loot.quality}",
-            f"Danger: {location.danger}",
+            f"ข้อมูล loot: {location.name} ({match.map_data.display_name})",
+            f"คุณภาพ loot: {th_value(loot.quality)}",
+            f"ความเสี่ยง: {th_value(location.danger)}",
             format_verification(loot.verification if loot.verification.source != "unverified" else location.verification),
         ]
         if location.description:
-            lines.append(f"Intel: {location.description}")
+            lines.append(f"ข้อมูล: {location.description}")
         if loot.high_tier_buildings:
             lines.append("")
-            lines.append("High-tier buildings:")
+            lines.append("อาคาร/จุด loot ดี:")
             lines.extend(f"- {item}" for item in loot.high_tier_buildings)
         if loot.route:
             lines.append("")
-            lines.append("Recommended route:")
+            lines.append("เส้นทาง loot แนะนำ:")
             lines.extend(f"{index}. {item}" for index, item in enumerate(loot.route, start=1))
         if loot.notes:
             lines.append("")
-            lines.append(f"Notes: {loot.notes}")
+            lines.append(f"หมายเหตุ: {loot.notes}")
         blocks.append("\n".join(lines))
 
     return "\n\n".join(blocks)
@@ -104,20 +143,20 @@ def format_loot_results(matches: list[LocationMatch]) -> str:
 
 def format_drop_recommendation(map_data: MapData, risk_hint: str | None = None) -> str:
     drops = map_data.drops
-    lines = [f"Drop recommendations for {map_data.display_name}"]
+    lines = [f"แนะนำจุดลง: {map_data.display_name}"]
     lines.append(format_verification(drops.verification if drops.verification.source != "unverified" else map_data.verification))
     if risk_hint:
-        lines.append(f"Focus: {risk_hint}")
+        lines.append(f"โฟกัส: {th_value(risk_hint)}")
     lines.append("")
 
     sections = [
-        ("Hot drops", drops.hot),
-        ("Medium-risk drops", drops.medium),
-        ("Safe drops", drops.safe),
+        ("จุดลงร้อน/เสี่ยงสูง", drops.hot),
+        ("จุดลงเสี่ยงปานกลาง", drops.medium),
+        ("จุดลงปลอดภัยกว่า", drops.safe),
     ]
     for title, items in sections:
         lines.append(f"{title}:")
-        lines.extend(f"- {item}" for item in items or ["No data yet"])
+        lines.extend(f"- {item}" for item in items or ["ยังไม่มีข้อมูล"])
         lines.append("")
 
     return "\n".join(lines).strip()
@@ -127,11 +166,11 @@ def format_map_overview(match: LocationMatch) -> str:
     location = match.location
     lines = [
         f"{location.name} ({match.map_data.display_name})",
-        f"Danger: {location.danger}",
-        f"Loot: {location.loot.quality}",
+        f"ความเสี่ยง: {th_value(location.danger)}",
+        f"คุณภาพ loot: {th_value(location.loot.quality)}",
     ]
     if location.description:
-        lines.append(f"Intel: {location.description}")
+        lines.append(f"ข้อมูล: {location.description}")
     if location.vehicles:
-        lines.append(f"Vehicle spawns: {len(location.vehicles)} known")
+        lines.append(f"จุดเกิดรถ: มีข้อมูล {len(location.vehicles)} จุด")
     return "\n".join(lines)
