@@ -130,10 +130,34 @@
     {
       "name": "Taego Secret Room",
       "aliases": ["secret room", "key room", "ห้องลับ", "ห้องกุญแจ"],
-      "locations": ["North of Terminal small warehouse", "Palace hillside compound", "Wol Song locked building", "Shipyard north warehouse", "Ho San east roadside building"],
+      "locations": [
+        "Northwest coast above Wol Song",
+        "North of Go Dok, west of Army Base",
+        "West edge of Hae Moo Sa, on the coastal road",
+        "Southwest coast below Hae Moo Sa",
+        "Central north hills, northwest of Yong Cheon",
+        "East of Yong Cheon / west of Shipyard, near the road compound",
+        "North of Airport, west of the runway fields",
+        "Airport west-side compound",
+        "North of Kang Neung, on the eastern valley road",
+        "Between Ho San and Buk San Sa, at the central road compound",
+        "Southeast of Oh Hyang, west of the eastern border road",
+        "Southwest of School / south of Ho San Prison",
+        "Southeast of Song Am, north of Studio",
+        "Southeast coast below Studio",
+        "Southwest coast west of Ho San Prison"
+      ],
       "requirements": "Taego Secret Room Key.",
-      "loot": "Crate-tier weapons, self AED, armor, scopes, meds, and high-value attachments.",
-      "notes": "Keys are rare world spawns; secure a vehicle before detouring."
+      "loot": "Mid to high-tier loot with possible Self-AED. Current official patch notes also list items such as All-In-One Repair Kit, Emergency Cover Flare, Emergency Support Flare, and Jammer Pack Lv.3 as possible Secret Room loot sources.",
+      "notes": "15 marker callouts transcribed from the user-provided Letrix/HotdropWarrior community map image. Exact doors should still be checked in current PC live or PUBG Bridge.",
+      "verification": {
+        "source": "trusted_community_map_and_editorial_guide",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "Update 41.1 source research",
+        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+        "notes": "Reddit correction and Dot Esports corroborate 15 rooms. Marker callouts are transcribed from user-provided community image and still need live verification."
+      }
     }
   ],
   "drops": {

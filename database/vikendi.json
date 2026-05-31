@@ -125,10 +125,54 @@
     {
       "name": "Vikendi Security Room",
       "aliases": ["secret room", "security room", "ห้องลับ"],
-      "locations": ["Cosmodrome underground section", "Dino Park west security building", "Castle tunnel room", "Villa basement area"],
-      "requirements": "Security Key or key card depending on current Vikendi rules.",
-      "loot": "High-tier weapons, armor, meds, throwables, and attachments.",
-      "notes": "Exact spawns can change by update; keep this JSON current with the live patch."
+      "locations": [
+        "Northwest of Observatory, near the west mountain road",
+        "Northeast of Observatory / west of Cosmodrome, beside the bear cave cluster",
+        "East of Cosmodrome, north of the Laveni road",
+        "Southwest of Dinoland",
+        "Between Naros and Train Station, in the central hills",
+        "North of Castle, south of Train Station",
+        "Villa east-side compound",
+        "Northwest of Winery / west of Deka Mesto",
+        "South of Deka Mesto / north of Winery, beside the cave cluster",
+        "Southeast of Castle, west of Kranik, beside the cave cluster"
+      ],
+      "requirements": "World-spawned Security Key.",
+      "loot": "High-tier Vikendi Secret Room loot. Update 40.2 lists Jammer Pack, Emergency Pickup, Folded Shield, Mountain Bike, Mortar, All-In-One Repair Kit, Stun Gun, Zipline Gun, and Emergency Cover Flare as added Secret Room spawn items.",
+      "notes": "Pink secret-room markers transcribed from the user-provided Letrix/HotdropWarrior community map image. Exact doors should still be checked in current PC live or PUBG Bridge.",
+      "verification": {
+        "source": "official_patch_notes_and_trusted_community_map",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "Update 40.2 source research",
+        "source_url": "https://pubg.com/en/news/4552",
+        "notes": "Existence and Security Key requirement are official. Marker callouts are transcribed from user-provided community image and still need live verification."
+      }
+    },
+    {
+      "name": "Vikendi Bear Caves",
+      "aliases": ["bear cave", "cave", "ถ้ำหมี"],
+      "locations": [
+        "Northwest of Observatory",
+        "West of Cosmodrome",
+        "South of Cosmodrome",
+        "North of Train Station / west of Laveni",
+        "Southwest of Villa",
+        "Southwest of Deka Mesto",
+        "North of Winery",
+        "Southeast of Castle / west of Kranik"
+      ],
+      "requirements": "No key card requirement. Expect bears and cave entry risk.",
+      "loot": "Cave loot and tactical cover; verify exact current loot tables in PC live.",
+      "notes": "Green cave markers transcribed from the supplied Vikendi image.",
+      "verification": {
+        "source": "trusted_community_map",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "community image transcription",
+        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+        "notes": "Useful callouts from user-provided community image; exact cave entrances still need live verification."
+      }
     }
   ],
   "drops": {

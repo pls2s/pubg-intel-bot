@@ -24,9 +24,21 @@ Confidence rules:
 
 - PUBG official maps page confirms the current official map pages and featured landmarks for Erangel, Miramar, Sanhok, Taego, Vikendi, and Rondo.
 - PUBG official vehicles page confirms the current vehicle catalog.
+- PUBG Update 26.1 patch notes confirm Erangel Secret Rooms, underground entrances, world-spawned Secret Room Keys, and Normal/Custom Match availability.
+- PUBG Update 21.2 patch notes confirm Vikendi Secret Rooms, world-spawned Security Keys, and Normal/Custom Match availability.
 - PUBG Update 40.1 patch notes confirm that All-In-One Repair Kit, Emergency Cover Flare, and Jammer Pack spawn in Secret Rooms as of Update 40.1, and that Erangel returned from the Subzero variant.
+- PUBG Update 40.2 patch notes confirm additional Vikendi Secret Room loot items.
+- PUBG Update 41.1 patch notes confirm Emergency Support Flare and Jammer Pack Lv.3 availability from Secret Rooms.
 
 These official pages do not provide complete live coordinates for every vehicle spawn, loot route, or secret-room entrance. Those parts require in-game verification or a trusted map source.
+
+## Community Sources Checked
+
+- HotdropWarrior Reddit secret room map collection:
+  https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/
+- Reddit all secret rooms/security rooms/bear caves/labs source index:
+  https://www.reddit.com/r/PUBATTLEGROUNDS/comments/1e4aoqd/maps_for_all_secret_rooms_security_rooms_bear/
+- Detailed notes are tracked in [secret-room-source-research.md](secret-room-source-research.md).
 
 ## What I Need From You
 

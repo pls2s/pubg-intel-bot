@@ -1,0 +1,128 @@
+{
+  "map": "Karakin",
+  "verification": {
+    "source": "trusted_community_map",
+    "confidence": "medium",
+    "last_verified": "2026-05-31",
+    "patch": "community image transcription",
+    "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+    "notes": "Tunnel/Jamila/underground callouts transcribed from user-provided Letrix/HotdropWarrior community image. Needs current PC live verification."
+  },
+  "aliases": ["karakin", "คาราคิน"],
+  "locations": [
+    {
+      "name": "Bahr Sahir",
+      "aliases": ["bahr", "bahr sahir town"],
+      "vehicles": [],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["town blocks", "nearby tunnel entrances"],
+        "route": ["loot town", "check nearby tunnel entrance", "rotate toward Al Habar or central underground"],
+        "notes": "Tunnel access appears near the western side of the map."
+      },
+      "danger": "medium",
+      "description": "Northern Karakin town with nearby tunnel access."
+    },
+    {
+      "name": "Al Habar",
+      "aliases": ["al habar"],
+      "vehicles": [],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main town", "east high ground", "nearby Jamila building"],
+        "route": ["loot Al Habar edge", "check Jamila building marker", "rotate into central tunnels"],
+        "notes": "The source image marks a Jamila building east of Al Habar."
+      },
+      "danger": "medium-high",
+      "description": "Large eastern town with high loot and nearby special building route."
+    },
+    {
+      "name": "Bashara",
+      "aliases": ["bashara"],
+      "vehicles": [],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["town blocks", "nearby Jamila building"],
+        "route": ["loot Bashara", "check Jamila marker east of town", "rotate south or central"],
+        "notes": "The source image marks a Jamila building east/southeast of Bashara."
+      },
+      "danger": "medium",
+      "description": "Western Karakin town with nearby Jamila building route."
+    },
+    {
+      "name": "Al Hayik",
+      "aliases": ["al hayik"],
+      "vehicles": [],
+      "loot": {
+        "quality": "medium",
+        "high_tier_buildings": ["coastal town", "southwest Jamila marker"],
+        "route": ["loot town", "check southwest Jamila marker", "rotate central tunnels"],
+        "notes": "The source image marks a Jamila building west of Al Hayik."
+      },
+      "danger": "low-medium",
+      "description": "Southern coastal town with access to nearby tunnel/Jamila routes."
+    }
+  ],
+  "secret_rooms": [
+    {
+      "name": "Karakin Tunnel Entrances",
+      "aliases": ["tunnel", "underground", "bunker", "อุโมงค์", "ห้องลับ"],
+      "locations": [
+        "West of Bahr Sahir, at the west-side underground section",
+        "Southwest of Bahr Sahir",
+        "Central-west ridge between Bashara and Lab",
+        "Northwest of the central underground network",
+        "Central underground network around Helipad",
+        "Southeast of Helipad",
+        "East of Atahul ridge",
+        "Hadiqa Nemo west ridge",
+        "Al Hayik northeast ridge",
+        "South-central underground entrance above Al Hayik"
+      ],
+      "requirements": "No standard key-card requirement. Access depends on tunnel entrance state and current Karakin rules.",
+      "loot": "Underground/tunnel loot, weapons, armor, meds, and rotation value.",
+      "notes": "Pink tunnel markers and blue underground sections transcribed from the supplied Karakin image.",
+      "verification": {
+        "source": "trusted_community_map",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "community image transcription",
+        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+        "notes": "Useful callouts from user-provided community image; exact entrances need live verification."
+      }
+    },
+    {
+      "name": "Karakin Jamila Buildings",
+      "aliases": ["jamila", "jamila building", "special building"],
+      "locations": [
+        "East of Al Habar",
+        "East/southeast of Bashara",
+        "Southwest of Al Hayik",
+        "Central hills west of Lab"
+      ],
+      "requirements": "Current live building access rules; no key-card requirement noted from the supplied image.",
+      "loot": "Special building loot/route objective, four markers in the supplied image.",
+      "notes": "Green Jamila-building markers transcribed from the supplied Karakin image.",
+      "verification": {
+        "source": "trusted_community_map",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "community image transcription",
+        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+        "notes": "Use as route guidance until checked in current PC live."
+      }
+    }
+  ],
+  "drops": {
+    "verification": {
+      "source": "common_player_knowledge_seed",
+      "confidence": "low",
+      "last_verified": "2026-05-31",
+      "patch": "needs manual PC live verification",
+      "notes": "Initial tactical estimate for bot completeness."
+    },
+    "hot": ["Al Habar", "Bashara", "Hadiqa Nemo"],
+    "medium": ["Bahr Sahir", "Al Hayik", "central compounds"],
+    "safe": ["outer hill compounds", "south coast compounds", "small ridge villages"]
+  }
+}

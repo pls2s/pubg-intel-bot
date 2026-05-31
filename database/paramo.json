@@ -1,0 +1,105 @@
+{
+  "map": "Paramo",
+  "verification": {
+    "source": "trusted_community_map",
+    "confidence": "medium",
+    "last_verified": "2026-05-31",
+    "patch": "community image transcription",
+    "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+    "notes": "Secret room callouts transcribed from user-provided Letrix/HotdropWarrior community image. Paramo layout can rotate; verify in current live matches."
+  },
+  "aliases": ["paramo", "พาราโม"],
+  "locations": [
+    {
+      "name": "Capaco",
+      "aliases": ["capaco town"],
+      "vehicles": [],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["main town blocks", "nearby hill compounds"],
+        "route": ["loot Capaco", "check west/northwest marked secret rooms", "rotate toward Lab or Helipad"],
+        "notes": "Several secret-room markers appear west and northwest of Capaco."
+      },
+      "danger": "medium",
+      "description": "Western Paramo town with nearby secret-room checks."
+    },
+    {
+      "name": "Lab",
+      "aliases": ["paramo lab"],
+      "vehicles": [],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["Lab buildings", "ridge compounds"],
+        "route": ["loot Lab edge", "check north-central secret-room markers", "move toward Helipad"],
+        "notes": "Secret rooms appear around the north-central lava/ridge lines."
+      },
+      "danger": "medium-high",
+      "description": "Central high-ground area with strong loot and route pressure."
+    },
+    {
+      "name": "Helipad",
+      "aliases": ["helipad paramo"],
+      "vehicles": [],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["Helipad buildings", "south ridge compounds"],
+        "route": ["loot Helipad", "check south and southeast marked rooms", "rotate toward Atahul or Makalpa"],
+        "notes": "Multiple secret-room markers sit around the Helipad lava corridors."
+      },
+      "danger": "medium",
+      "description": "Central Paramo route point with several nearby secret-room markers."
+    },
+    {
+      "name": "Atahul",
+      "aliases": ["atahual", "atahual town"],
+      "vehicles": [],
+      "loot": {
+        "quality": "medium",
+        "high_tier_buildings": ["Atahul town", "east ridge compounds"],
+        "route": ["loot town edge", "check southeast marked room", "rotate west toward Helipad"],
+        "notes": "One marker appears southeast of Atahul."
+      },
+      "danger": "medium",
+      "description": "Eastern town with a nearby secret-room route."
+    }
+  ],
+  "secret_rooms": [
+    {
+      "name": "Paramo Secret Rooms",
+      "aliases": ["secret room", "key room", "ห้องลับ"],
+      "locations": [
+        "West edge of Capaco",
+        "Northwest of Capaco",
+        "North-central ridge west of Lab",
+        "North of Helipad in the lava valley",
+        "Southeast of Atahul",
+        "Southwest of Helipad",
+        "Southeast of Helipad",
+        "South-central hills below Helipad"
+      ],
+      "requirements": "Paramo Secret Room Key or current live access requirement.",
+      "loot": "High-value room loot depending on current Paramo live rules.",
+      "notes": "Markers transcribed from the supplied Paramo image. Paramo can have dynamic terrain/layout behavior, so verify exact marker placement in current PC live.",
+      "verification": {
+        "source": "trusted_community_map",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "community image transcription",
+        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+        "notes": "Useful callouts from user-provided community image; exact doors still need live verification."
+      }
+    }
+  ],
+  "drops": {
+    "verification": {
+      "source": "common_player_knowledge_seed",
+      "confidence": "low",
+      "last_verified": "2026-05-31",
+      "patch": "needs manual PC live verification",
+      "notes": "Initial tactical estimate for bot completeness."
+    },
+    "hot": ["Lab", "Helipad", "Capaco"],
+    "medium": ["Atahul", "Makalpa", "Hadiqa Nemo"],
+    "safe": ["outer compounds", "coastal compounds", "low-traffic ridge villages"]
+  }
+}

@@ -167,12 +167,36 @@
   ],
   "secret_rooms": [
     {
-      "name": "Erangel Basement Bunkers",
-      "aliases": ["basement", "bunker", "shelter"],
-      "locations": ["Shelter tunnel rooms", "Sosnovka Military Base underground bunkers"],
-      "requirements": "No standard key card in normal public matches; verify current event rules.",
-      "loot": "Military loot, helmets, armor, attachments, and meds.",
-      "notes": "Treat this entry as bunker intel rather than a guaranteed key-card room."
+      "name": "Erangel Secret Rooms",
+      "aliases": ["secret room", "secret basement", "basement", "bunker", "ห้องลับ"],
+      "locations": [
+        "South of Zharki, beside the road bend above Georgopol",
+        "East of Georgopol, west of Shooting Range, on the hillside line",
+        "South of Severny / west of Stalber, near the north-central road",
+        "North of Stalber, close to the north coast road",
+        "West of Kameshki, on the hill road east of Yasnaya Polyana",
+        "South of Hospital, northwest of Gatka",
+        "South of Ruins / northwest of Pochinki",
+        "Northwest of Primorsk, west of Quarry",
+        "North of Ferry Pier, southwest of Pochinki",
+        "Northwest of Farm, between School and Farm hills",
+        "West of Shelter, south of Mansion road",
+        "East of Mylta, south of the Mylta Power road",
+        "West Sosnovka Island coast, southwest of the Ferry Pier bridge exit",
+        "North of Sosnovka Military Base, central island hills",
+        "Southeast Sosnovka Island coast, west of Novorepnoye"
+      ],
+      "requirements": "World-spawned Secret Room Key / Basement Key. Break the wooden ground entrance first, then unlock the metal door with the key.",
+      "loot": "High-value secret-room loot. Current official patch notes list items such as All-In-One Repair Kit, Emergency Cover Flare, Emergency Support Flare, and Jammer Pack Lv.3 as possible Secret Room loot sources.",
+      "notes": "15 marker callouts transcribed from the user-provided Letrix/HotdropWarrior community map image. Use as practical guidance; exact entrance placement still needs current PC live or PUBG Bridge verification.",
+      "verification": {
+        "source": "official_patch_notes_and_trusted_community_map",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "Update 41.1 source research",
+        "source_url": "https://pubg.com/en/news/6717",
+        "notes": "Existence and key requirement are official. Room count and marker callouts are transcribed from user-provided community image and still need live verification."
+      }
     }
   ],
   "drops": {

@@ -1,0 +1,130 @@
+{
+  "map": "Deston",
+  "verification": {
+    "source": "trusted_community_map",
+    "confidence": "medium",
+    "last_verified": "2026-05-31",
+    "patch": "community image transcription",
+    "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+    "notes": "Secret/security room and pillar truck callouts transcribed from user-provided Letrix/HotdropWarrior community image. Needs current PC live verification."
+  },
+  "aliases": ["deston", "เดสตัน"],
+  "locations": [
+    {
+      "name": "Lodge",
+      "aliases": ["the lodge", "ลอดจ์"],
+      "vehicles": [],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["main lodge blocks", "roof rooms", "upper/lower security rooms"],
+        "route": ["land outer roof or side entrance", "clear one wing", "check marked up/down/roof security rooms"],
+        "notes": "Large complex with many security-room markers in the source image."
+      },
+      "danger": "very high",
+      "description": "Dense Deston compound with many vertical angles and security-room checks."
+    },
+    {
+      "name": "Arena",
+      "aliases": ["arena deston"],
+      "vehicles": [],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["arena interior", "nearby compounds"],
+        "route": ["clear arena", "check south road", "rotate to Lodge or Buxley"],
+        "notes": "One security-room marker appears near Arena in the supplied map."
+      },
+      "danger": "medium-high",
+      "description": "Mid-map fight area with security-room value."
+    },
+    {
+      "name": "Assembly",
+      "aliases": ["assembly deston"],
+      "vehicles": [],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main Assembly structure", "outer industrial buildings"],
+        "route": ["loot main structure", "check marked security room", "rotate east coast or Concert"],
+        "notes": "One down-type security-room marker appears at Assembly in the supplied map."
+      },
+      "danger": "medium-high",
+      "description": "Large industrial point with a marked security-room location."
+    },
+    {
+      "name": "Hydroelectric Dam",
+      "aliases": ["dam", "hydro dam"],
+      "vehicles": [],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["dam building", "river-side structures"],
+        "route": ["clear dam buildings", "check marked security room", "rotate north to Cavala or Lodge"],
+        "notes": "One security-room marker appears at the dam in the supplied map."
+      },
+      "danger": "medium",
+      "description": "Dam-side loot area with a marked security-room point."
+    }
+  ],
+  "secret_rooms": [
+    {
+      "name": "Deston Security Rooms",
+      "aliases": ["secret room", "security room", "key room", "ห้องลับ"],
+      "locations": [
+        "Assembly main building, down-marker side",
+        "Arena compound",
+        "Lodge complex, multiple up/down/roof markers across the main blocks",
+        "Hydroelectric Dam, west-side marked building"
+      ],
+      "requirements": "Deston Security Key or current live security-room access requirement.",
+      "loot": "High-tier security-room loot, special items, armor, meds, weapons, and utility depending on current patch.",
+      "notes": "The source image marks room access types: up, down, roof, and mixed-level rooms. Lodge has many individual room markers, so use the image or live verification for exact room-by-room routing.",
+      "verification": {
+        "source": "trusted_community_map",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "community image transcription",
+        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+        "notes": "Transcribed from user-provided Deston community map image; exact floors and doors need current PC live verification."
+      }
+    },
+    {
+      "name": "Deston Pillar Trucks",
+      "aliases": ["pillar truck", "security truck", "truck"],
+      "locations": [
+        "Ten Forts",
+        "Carpenter's End",
+        "Concert",
+        "Construction Site",
+        "Buxley",
+        "East coast dock strip",
+        "Baclift",
+        "Cavala",
+        "Turrita",
+        "Sancarna",
+        "Koro",
+        "Holston Meadows"
+      ],
+      "requirements": "No key requirement; use as a loot/utility route objective if the truck is active in the current match.",
+      "loot": "Pillar truck route/loot objective, not a locked room.",
+      "notes": "Blue markers transcribed from the supplied Deston image.",
+      "verification": {
+        "source": "trusted_community_map",
+        "confidence": "medium",
+        "last_verified": "2026-05-31",
+        "patch": "community image transcription",
+        "source_url": "https://www.reddit.com/r/PUBATTLEGROUNDS/comments/18je495/i_created_some_pubg_secret_room_maps_for_my_clan/",
+        "notes": "Use as route guidance until verified in current PC live."
+      }
+    }
+  ],
+  "drops": {
+    "verification": {
+      "source": "common_player_knowledge_seed",
+      "confidence": "low",
+      "last_verified": "2026-05-31",
+      "patch": "needs manual PC live verification",
+      "notes": "Initial tactical estimate for bot completeness."
+    },
+    "hot": ["Lodge", "Ripton", "Arena"],
+    "medium": ["Assembly", "Buxley", "Hydroelectric Dam"],
+    "safe": ["Holston Meadows", "Carpenter's End edge", "coastal compounds"]
+  }
+}
