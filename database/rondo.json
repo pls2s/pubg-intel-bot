@@ -1,0 +1,136 @@
+{
+  "map": "Rondo",
+  "aliases": ["rondo", "รอนโด"],
+  "locations": [
+    {
+      "name": "Jadena City",
+      "aliases": ["jadena", "เมืองจาเดนา"],
+      "vehicles": [
+        {
+          "name": "West Boulevard",
+          "description": "Check the main west road for city exits.",
+          "landmarks": ["west boulevard", "apartment blocks"]
+        },
+        {
+          "name": "Market Road",
+          "description": "Good pickup after looting market-side buildings.",
+          "landmarks": ["market", "main road"]
+        }
+      ],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["market blocks", "apartment towers", "office row"],
+        "route": ["land market roof", "clear apartments", "exit west boulevard"],
+        "notes": "High loot density with many vertical angles."
+      },
+      "danger": "very high",
+      "description": "Large urban hot drop with intense building fights."
+    },
+    {
+      "name": "Stadium",
+      "aliases": ["arena", "สนามกีฬา"],
+      "vehicles": [
+        {
+          "name": "North Parking",
+          "description": "Vehicle check after clearing the stadium bowl.",
+          "landmarks": ["parking lot", "north entrance"]
+        },
+        {
+          "name": "East Road",
+          "description": "Backup route for rotations toward Jadena City.",
+          "landmarks": ["east gate", "roadside shops"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["stadium bowl", "VIP rooms", "outer shops"],
+        "route": ["drop inner bowl", "clear VIP rooms", "leave north parking"],
+        "notes": "Open center is dangerous once multiple teams have scopes."
+      },
+      "danger": "high",
+      "description": "Landmark drop with strong loot and exposed rotations."
+    },
+    {
+      "name": "Rin Jiang",
+      "aliases": ["rinjiang", "river city", "รินเจียง"],
+      "vehicles": [
+        {
+          "name": "River Road",
+          "description": "Road spawns along the river edge.",
+          "landmarks": ["river", "bridge"]
+        },
+        {
+          "name": "North Shops",
+          "description": "Useful exit after looting the shop row.",
+          "landmarks": ["shops", "north road"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["river apartments", "shop row", "warehouse blocks"],
+        "route": ["loot river apartments", "clear shops", "hold bridge or rotate north"],
+        "notes": "Strong mid-map control if you secure bridge vision."
+      },
+      "danger": "medium-high",
+      "description": "River city with bridge control and layered buildings."
+    },
+    {
+      "name": "Yu Lin",
+      "aliases": ["yulin", "ยู่หลิน"],
+      "vehicles": [
+        {
+          "name": "South Road",
+          "description": "Primary rotation line for safer edge play.",
+          "landmarks": ["south houses", "road junction"]
+        }
+      ],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["main block", "warehouse", "hill houses"],
+        "route": ["split main block", "regroup warehouse", "rotate south road"],
+        "notes": "Good controlled start if the plane path misses Jadena."
+      },
+      "danger": "medium",
+      "description": "Town with solid loot and calmer early fights."
+    },
+    {
+      "name": "Neox Factory",
+      "aliases": ["neox", "factory", "โรงงาน"],
+      "vehicles": [
+        {
+          "name": "Factory Gate",
+          "description": "Vehicle line near the main gate.",
+          "landmarks": ["main gate", "parking area"]
+        },
+        {
+          "name": "East Service Road",
+          "description": "Backup spawn for quieter exits.",
+          "landmarks": ["service road", "loading bays"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main factory", "loading bays", "office wing"],
+        "route": ["loot main factory", "clear office wing", "take east service road"],
+        "notes": "Industrial cover gives good reset options after first contact."
+      },
+      "danger": "medium-high",
+      "description": "Factory complex with strong loot and many hard-cover fights."
+    }
+  ],
+  "secret_rooms": [
+    {
+      "name": "Rondo Secured Room",
+      "aliases": ["secured room", "locked room", "market key", "ห้องลับ"],
+      "locations": ["Jadena City market block", "Rin Jiang shop row", "Neox Factory office wing"],
+      "requirements": "Secured room key or market access item depending on match rules.",
+      "loot": "High-tier weapons, armor, utility, and attachments.",
+      "notes": "Rondo systems may change by patch; update this dataset after game updates."
+    }
+  ],
+  "drops": {
+    "hot": ["Jadena City", "Stadium", "Rin Jiang center"],
+    "medium": ["Neox Factory", "Yu Lin", "Tin Long Garden"],
+    "safe": ["coastal compounds", "small hill villages", "outer farms", "roadside warehouses"]
+  }
+}

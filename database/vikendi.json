@@ -1,0 +1,131 @@
+{
+  "map": "Vikendi",
+  "aliases": ["vikendi", "วิเคนดิ"],
+  "locations": [
+    {
+      "name": "Cosmodrome",
+      "aliases": ["cosmo", "คอสโมโดรม"],
+      "vehicles": [
+        {
+          "name": "South Entrance",
+          "description": "Check the south road for vehicles before leaving the facility.",
+          "landmarks": ["south gate", "launch pad"]
+        },
+        {
+          "name": "North Road",
+          "description": "Useful for rotations toward Cement Factory or Trevno.",
+          "landmarks": ["north hangars", "snow road"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["underground tunnels", "hangars", "launch buildings"],
+        "route": ["drop hangars", "clear underground", "exit south entrance vehicle"],
+        "notes": "Large area; keep track of teams entering tunnels."
+      },
+      "danger": "high",
+      "description": "Large northern facility with strong loot and tunnel fights."
+    },
+    {
+      "name": "Castle",
+      "aliases": ["castle island", "ปราสาท"],
+      "vehicles": [
+        {
+          "name": "Bridge Road",
+          "description": "Check both bridge ends before committing to a rotate.",
+          "landmarks": ["west bridge", "east bridge"]
+        },
+        {
+          "name": "South Hill",
+          "description": "Backup spawn outside the island for safer exits.",
+          "landmarks": ["south hill", "outer compound"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main keep", "tower rooms", "bridge-side houses"],
+        "route": ["land main keep", "clear towers", "control bridge before rotating"],
+        "notes": "Bridge exits are often watched."
+      },
+      "danger": "high",
+      "description": "Iconic island drop with strong loot and risky exits."
+    },
+    {
+      "name": "Villa",
+      "aliases": ["villa compound", "วิลล่า"],
+      "vehicles": [
+        {
+          "name": "Front Road",
+          "description": "Fast pickup if the main building is too busy.",
+          "landmarks": ["front gate", "main road"]
+        }
+      ],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["main villa", "garage compound"],
+        "route": ["land main roof", "clear top-down", "leave front road after first fight"],
+        "notes": "Small, rich, and very punishing."
+      },
+      "danger": "very high",
+      "description": "Compact high-tier compound with immediate fights."
+    },
+    {
+      "name": "Dino Park",
+      "aliases": ["dinopark", "ไดโนพาร์ค"],
+      "vehicles": [
+        {
+          "name": "North Parking",
+          "description": "Vehicle check near the north car park.",
+          "landmarks": ["parking lot", "dinosaur gate"]
+        },
+        {
+          "name": "East Road",
+          "description": "Backup rotation route toward Castle or Winery.",
+          "landmarks": ["east gate", "snow road"]
+        }
+      ],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["main hall", "maze buildings", "north shops"],
+        "route": ["loot main hall", "clear maze", "rotate north parking"],
+        "notes": "Good for squads that want fights without Villa-level chaos."
+      },
+      "danger": "medium",
+      "description": "Theme park area with many small buildings and flank routes."
+    },
+    {
+      "name": "Cement Factory",
+      "aliases": ["cement", "โรงปูน"],
+      "vehicles": [
+        {
+          "name": "West Road",
+          "description": "Primary vehicle line toward Cosmodrome or central Vikendi.",
+          "landmarks": ["west warehouse", "road bend"]
+        }
+      ],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["factory floors", "warehouse row", "office building"],
+        "route": ["split factory floors", "clear warehouses", "take west road vehicle"],
+        "notes": "Strong vertical control if you win the upper floors."
+      },
+      "danger": "medium",
+      "description": "Industrial drop with good loot and vertical angles."
+    }
+  ],
+  "secret_rooms": [
+    {
+      "name": "Vikendi Security Room",
+      "aliases": ["secret room", "security room", "ห้องลับ"],
+      "locations": ["Cosmodrome underground section", "Dino Park west security building", "Castle tunnel room", "Villa basement area"],
+      "requirements": "Security Key or key card depending on current Vikendi rules.",
+      "loot": "High-tier weapons, armor, meds, throwables, and attachments.",
+      "notes": "Exact spawns can change by update; keep this JSON current with the live patch."
+    }
+  ],
+  "drops": {
+    "hot": ["Villa", "Castle", "Cosmodrome"],
+    "medium": ["Dino Park", "Cement Factory", "Winery"],
+    "safe": ["Trevno edge", "Milnar outskirts", "Hot Springs compounds", "Dobro Mesto edge"]
+  }
+}

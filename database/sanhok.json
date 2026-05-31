@@ -1,0 +1,131 @@
+{
+  "map": "Sanhok",
+  "aliases": ["sanhok", "ซานฮอก"],
+  "locations": [
+    {
+      "name": "Bootcamp",
+      "aliases": ["boot camp", "บูทแคมป์"],
+      "vehicles": [
+        {
+          "name": "West Road",
+          "description": "Check the road west of Bootcamp before rotating out.",
+          "landmarks": ["west wall", "road bend"]
+        },
+        {
+          "name": "South Compound",
+          "description": "Secondary spawn near the small compound south of Bootcamp.",
+          "landmarks": ["south houses", "jungle path"]
+        }
+      ],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["central warehouse", "long barracks", "roof buildings"],
+        "route": ["land central roof", "clear warehouse", "exit west road after first circle"],
+        "notes": "Fast fights from all sides; control rooftops early."
+      },
+      "danger": "extreme",
+      "description": "Most contested Sanhok drop with dense loot and many angles."
+    },
+    {
+      "name": "Paradise Resort",
+      "aliases": ["paradise", "รีสอร์ต"],
+      "vehicles": [
+        {
+          "name": "North Road",
+          "description": "Primary rotation line toward Camp Alpha and Quarry.",
+          "landmarks": ["north entrance", "roadside huts"]
+        },
+        {
+          "name": "East Road",
+          "description": "Backup vehicle check if north side is contested.",
+          "landmarks": ["east wall", "jungle road"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main resort", "pool-side buildings", "east rooms"],
+        "route": ["land main resort", "clear pool side", "leave north when third parties arrive"],
+        "notes": "Strong loot with dangerous courtyard crossings."
+      },
+      "danger": "high",
+      "description": "High-value resort complex with close-range room fights."
+    },
+    {
+      "name": "Ruins",
+      "aliases": ["temple", "วัด", "ruin"],
+      "vehicles": [
+        {
+          "name": "Southwest Road",
+          "description": "Best exit if the center is too crowded.",
+          "landmarks": ["southwest road", "river bank"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main temple", "lower tunnels", "outer huts"],
+        "route": ["drop temple top", "clear lower tunnels", "move southwest road"],
+        "notes": "Vertical audio is difficult; move carefully."
+      },
+      "danger": "high",
+      "description": "Maze-like temple area with strong loot and confusing angles."
+    },
+    {
+      "name": "Camp Alpha",
+      "aliases": ["alpha", "แคมป์อัลฟ่า"],
+      "vehicles": [
+        {
+          "name": "Main Road North",
+          "description": "Vehicle line for rotating toward Ha Tinh or Paradise.",
+          "landmarks": ["north gate", "main road"]
+        },
+        {
+          "name": "Beach Road",
+          "description": "Safer backup route along the coast.",
+          "landmarks": ["beach", "coastal huts"]
+        }
+      ],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["main barracks", "warehouse", "north huts"],
+        "route": ["loot barracks", "clear warehouse", "take north road for circle"],
+        "notes": "Good squad start with lower risk than Bootcamp."
+      },
+      "danger": "medium",
+      "description": "Military camp with reliable loot and reasonable rotations."
+    },
+    {
+      "name": "Kampong",
+      "aliases": ["kampong village", "หมู่บ้าน"],
+      "vehicles": [
+        {
+          "name": "East Road",
+          "description": "Road spawn for fast rotations toward docks or quarry.",
+          "landmarks": ["east bridge", "road houses"]
+        }
+      ],
+      "loot": {
+        "quality": "medium",
+        "high_tier_buildings": ["two-story houses", "warehouse", "river compound"],
+        "route": ["split houses", "regroup at warehouse", "rotate east road"],
+        "notes": "Quiet choice for safer starts."
+      },
+      "danger": "low-medium",
+      "description": "Edge village with manageable fights and stable vehicle access."
+    }
+  ],
+  "secret_rooms": [
+    {
+      "name": "Sanhok Cave Loot Route",
+      "aliases": ["cave", "ถ้ำ"],
+      "locations": ["Cave water entrance", "Cave upper ledges"],
+      "requirements": "No key card; use water or upper entry.",
+      "loot": "Medium to high loot with boat escape options.",
+      "notes": "Not a locked secret room, but useful hidden-route intel."
+    }
+  ],
+  "drops": {
+    "hot": ["Bootcamp", "Paradise Resort", "Ruins"],
+    "medium": ["Camp Alpha", "Pai Nan", "Quarry"],
+    "safe": ["Kampong", "Docks edge", "Ha Tinh outskirts", "Lakawi coast"]
+  }
+}

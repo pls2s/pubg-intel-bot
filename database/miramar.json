@@ -1,0 +1,132 @@
+{
+  "map": "Miramar",
+  "aliases": ["miramar", "มิรามาร์"],
+  "locations": [
+    {
+      "name": "Pecado",
+      "aliases": ["pecado arena", "casino", "เปคาโด"],
+      "vehicles": [
+        {
+          "name": "Arena Road",
+          "description": "Check the road outside the arena for fast desert rotations.",
+          "landmarks": ["arena", "main road"]
+        },
+        {
+          "name": "Casino Garage",
+          "description": "Garage-side spawn gives cover before leaving town.",
+          "landmarks": ["casino", "garage"]
+        }
+      ],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["arena", "casino", "hotel blocks"],
+        "route": ["land arena rafters", "clear casino", "loot hotels before leaving north"],
+        "notes": "Excellent gear but almost always contested."
+      },
+      "danger": "very high",
+      "description": "Classic Miramar hot drop with immediate close-range fighting."
+    },
+    {
+      "name": "Hacienda del Patron",
+      "aliases": ["hacienda", "villa", "ฮาเซียนดา"],
+      "vehicles": [
+        {
+          "name": "Front Road",
+          "description": "Fast car pickup on the main road toward San Martin.",
+          "landmarks": ["front gate", "main road"]
+        },
+        {
+          "name": "North Compound",
+          "description": "Secondary vehicle check when Hacienda is crowded.",
+          "landmarks": ["north houses", "hill road"]
+        }
+      ],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["main mansion", "garage compound"],
+        "route": ["take roof or balcony", "clear center rooms", "exit front road or north compound"],
+        "notes": "Small area, fast fights, high reward."
+      },
+      "danger": "extreme",
+      "description": "Tiny high-tier mansion with very little reset space."
+    },
+    {
+      "name": "Los Leones",
+      "aliases": ["leones", "los", "ลอสเลโอเนส"],
+      "vehicles": [
+        {
+          "name": "South Highway",
+          "description": "Multiple road checks along the south edge.",
+          "landmarks": ["south highway", "warehouses"]
+        },
+        {
+          "name": "Construction Road",
+          "description": "Useful for rotating out after looting construction.",
+          "landmarks": ["construction", "east road"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["construction site", "high-rise blocks", "warehouses"],
+        "route": ["land construction", "sweep nearby high-rises", "take south highway vehicle"],
+        "notes": "Large enough to split safely if the plane path is busy."
+      },
+      "danger": "high",
+      "description": "Largest city on Miramar with long sight lines and many angles."
+    },
+    {
+      "name": "Power Grid",
+      "aliases": ["grid", "ไฟฟ้า"],
+      "vehicles": [
+        {
+          "name": "West Road",
+          "description": "Road spawn for rotations to Pecado or Chumacera.",
+          "landmarks": ["west road", "transformers"]
+        },
+        {
+          "name": "Hill Compound",
+          "description": "Check the compound above Power Grid for a safer vehicle.",
+          "landmarks": ["hill houses", "ridge"]
+        }
+      ],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["central warehouses", "office building", "transformer yard"],
+        "route": ["clear warehouses", "loot office", "hold hill compound or rotate west"],
+        "notes": "Good central position with manageable contest rate."
+      },
+      "danger": "medium",
+      "description": "Flexible central drop with decent loot and good vehicle access."
+    },
+    {
+      "name": "Valle del Mar",
+      "aliases": ["valle", "bridge town"],
+      "vehicles": [
+        {
+          "name": "Bridge Road",
+          "description": "Primary car line for island and mainland rotations.",
+          "landmarks": ["bridge", "church"]
+        },
+        {
+          "name": "West Coast Road",
+          "description": "Backup spawn toward Chumacera and coastal compounds.",
+          "landmarks": ["coast road", "west houses"]
+        }
+      ],
+      "loot": {
+        "quality": "medium",
+        "high_tier_buildings": ["church", "warehouse", "two-story compounds"],
+        "route": ["loot church side", "clear warehouse", "control bridge road vehicle"],
+        "notes": "Lower loot ceiling but strong for safe edge starts."
+      },
+      "danger": "low-medium",
+      "description": "Quiet coastal town with bridge control value."
+    }
+  ],
+  "secret_rooms": [],
+  "drops": {
+    "hot": ["Pecado", "Hacienda del Patron", "Los Leones center"],
+    "medium": ["Power Grid", "San Martin edge", "El Pozo"],
+    "safe": ["Valle del Mar", "Impala edge", "La Cobreria outskirts", "coastal compounds"]
+  }
+}

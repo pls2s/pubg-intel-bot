@@ -4,6 +4,7 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.types import BotCommand
 
 from config import Settings
 from handlers import common, drop, loot, search, secret, vehicle
@@ -25,6 +26,16 @@ async def main() -> None:
     await sqlite_service.init()
 
     bot = Bot(token=settings.bot_token)
+    await bot.set_my_commands(
+        [
+            BotCommand(command="start", description="Open PUBG Intel Bot"),
+            BotCommand(command="help", description="Show commands and examples"),
+            BotCommand(command="vehicle", description="Find vehicle spawn locations"),
+            BotCommand(command="secret", description="Find secret room locations"),
+            BotCommand(command="loot", description="Get loot intelligence"),
+            BotCommand(command="drop", description="Get drop recommendations"),
+        ]
+    )
     dp = Dispatcher()
 
     # Router order matters: natural-language search is the final catch-all.

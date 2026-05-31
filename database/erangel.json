@@ -1,0 +1,175 @@
+{
+  "map": "Erangel",
+  "aliases": ["erangel", "เอรันเกล"],
+  "locations": [
+    {
+      "name": "Pochinki",
+      "aliases": ["pochinki city", "โพชินกิ", "พอชินกิ"],
+      "vehicles": [
+        {
+          "name": "North Road",
+          "description": "Check both sides of the main road north toward Rozhok.",
+          "landmarks": ["north compound", "road bend"]
+        },
+        {
+          "name": "West Garage",
+          "description": "Garage spawn on the west edge is useful for fast rotations to Gatka.",
+          "landmarks": ["west garage", "yellow houses"]
+        },
+        {
+          "name": "South Junction",
+          "description": "Common road spawn near the junction heading to Ferry Pier.",
+          "landmarks": ["southern road", "open fields"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["central two-story houses", "church-side compounds", "west garage compound"],
+        "route": ["land on central roofs", "clear west garage compound", "rotate north road or south junction"],
+        "notes": "Strong loot density but long building-to-building fights are common."
+      },
+      "danger": "high",
+      "description": "Popular hot drop with dense compounds and quick third-party fights."
+    },
+    {
+      "name": "School",
+      "aliases": ["school apartments", "โรงเรียน"],
+      "vehicles": [
+        {
+          "name": "Apartment Garages",
+          "description": "Vehicles often appear around the apartment blocks west of School.",
+          "landmarks": ["apartments", "basketball court"]
+        },
+        {
+          "name": "Main Road",
+          "description": "Check the north-south road for cars before rotating to Rozhok.",
+          "landmarks": ["school entrance", "roadside wall"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main school building", "gym", "apartment rooftops"],
+        "route": ["drop roof or pool side", "clear gym and classrooms", "cross to apartments for helmets and meds"],
+        "notes": "Fast loot but low cover while crossing between School and Apartments."
+      },
+      "danger": "very high",
+      "description": "Central hot drop with fast close-range fights."
+    },
+    {
+      "name": "Sosnovka Military Base",
+      "aliases": ["military base", "sosnovka", "ฐานทัพ"],
+      "vehicles": [
+        {
+          "name": "East Gate",
+          "description": "Reliable escape route toward the east bridge.",
+          "landmarks": ["east checkpoint", "bridge road"]
+        },
+        {
+          "name": "West Barracks Road",
+          "description": "Check the road line west of the barracks before leaving island.",
+          "landmarks": ["barracks", "west road"]
+        },
+        {
+          "name": "South Radar Road",
+          "description": "Useful spawn when rotating late from radar or C-building.",
+          "landmarks": ["radar tower", "southern coast road"]
+        }
+      ],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["C-building", "barracks", "radar station", "warehouses"],
+        "route": ["start C-building", "sweep barracks", "take east gate vehicle for bridge timing"],
+        "notes": "Great gear, but bridge control is the main risk."
+      },
+      "danger": "extreme",
+      "description": "High-value military loot with difficult island rotations."
+    },
+    {
+      "name": "Rozhok",
+      "aliases": ["rozhok town", "โรซฮอค"],
+      "vehicles": [
+        {
+          "name": "North Bridge Road",
+          "description": "Check road spawns near the bridge toward Water Town.",
+          "landmarks": ["north bridge", "river"]
+        },
+        {
+          "name": "Garage Hill",
+          "description": "Garage-side spawn helps rotate into School or Yasnaya fields.",
+          "landmarks": ["garage", "hill compound"]
+        }
+      ],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["church hill compound", "restaurant block", "garage compound"],
+        "route": ["loot church hill", "clear restaurant block", "hold north bridge or rotate School"],
+        "notes": "Good central control and flexible rotations."
+      },
+      "danger": "medium",
+      "description": "Central town with good rotation options and frequent mid-game traffic."
+    },
+    {
+      "name": "Georgopol",
+      "aliases": ["georgopol crates", "george", "จีโอ"],
+      "vehicles": [
+        {
+          "name": "Container Yard Roads",
+          "description": "Look on both roads beside the crate yard.",
+          "landmarks": ["cranes", "containers"]
+        },
+        {
+          "name": "Hospital Road",
+          "description": "Spawn line west of city for safe exits.",
+          "landmarks": ["hospital", "west road"]
+        }
+      ],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["crate tops", "warehouses", "north city apartments"],
+        "route": ["drop crates for weapons", "clear warehouses", "rotate north city or hospital vehicle"],
+        "notes": "Crates are rich but exposed to long angles."
+      },
+      "danger": "high",
+      "description": "Large loot area split by the river with exposed container fights."
+    },
+    {
+      "name": "Mylta Power",
+      "aliases": ["power", "mylta plant", "โรงไฟฟ้า"],
+      "vehicles": [
+        {
+          "name": "Main Road East",
+          "description": "Road spawn toward Mylta and Prison rotations.",
+          "landmarks": ["east road", "pipe yard"]
+        },
+        {
+          "name": "Factory Entrance",
+          "description": "Check the entrance line before committing to a long rotate.",
+          "landmarks": ["factory gate", "cooling tower"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main power building", "small power compound", "warehouse row"],
+        "route": ["loot main building", "sweep warehouses", "leave from east road vehicle"],
+        "notes": "Strong squad loot with fewer buildings than Pochinki or Georgopol."
+      },
+      "danger": "medium-high",
+      "description": "Compact high-tier loot area with exposed exits."
+    }
+  ],
+  "secret_rooms": [
+    {
+      "name": "Erangel Basement Bunkers",
+      "aliases": ["basement", "bunker", "shelter"],
+      "locations": ["Shelter tunnel rooms", "Sosnovka Military Base underground bunkers"],
+      "requirements": "No standard key card in normal public matches; verify current event rules.",
+      "loot": "Military loot, helmets, armor, attachments, and meds.",
+      "notes": "Treat this entry as bunker intel rather than a guaranteed key-card room."
+    }
+  ],
+  "drops": {
+    "hot": ["Pochinki", "School", "Sosnovka Military Base", "Georgopol Crates"],
+    "medium": ["Rozhok", "Mylta Power", "Yasnaya outskirts"],
+    "safe": ["Farm compounds", "Primorsk edge", "Zharki", "Stalber lower compounds"]
+  }
+}

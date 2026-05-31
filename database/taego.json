@@ -1,0 +1,136 @@
+{
+  "map": "Taego",
+  "aliases": ["taego", "แทโก"],
+  "locations": [
+    {
+      "name": "Palace",
+      "aliases": ["palace compound", "พระราชวัง"],
+      "vehicles": [
+        {
+          "name": "South Gate",
+          "description": "Check the south gate road before leaving the palace grounds.",
+          "landmarks": ["south gate", "main road"]
+        },
+        {
+          "name": "East Road",
+          "description": "Reliable rotation toward Terminal or School.",
+          "landmarks": ["east wall", "rice fields"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["main palace", "courtyard buildings", "east compound"],
+        "route": ["land main palace", "clear courtyard", "exit south gate"],
+        "notes": "Good squad loot with multiple escape paths."
+      },
+      "danger": "high",
+      "description": "Large central compound with strong loot and open-field exits."
+    },
+    {
+      "name": "Terminal",
+      "aliases": ["airport", "เทอร์มินัล"],
+      "vehicles": [
+        {
+          "name": "Runway Road",
+          "description": "Road spawn near runway for long rotations.",
+          "landmarks": ["runway", "terminal building"]
+        },
+        {
+          "name": "North Parking",
+          "description": "Backup vehicle line with better cover.",
+          "landmarks": ["parking", "north entrance"]
+        }
+      ],
+      "loot": {
+        "quality": "very high",
+        "high_tier_buildings": ["main terminal", "hangars", "parking offices"],
+        "route": ["drop terminal roof", "clear hangars", "rotate north parking"],
+        "notes": "Wide angles make early scouting important."
+      },
+      "danger": "high",
+      "description": "High-value airport area with long lines of sight."
+    },
+    {
+      "name": "School",
+      "aliases": ["taego school", "โรงเรียนแทโก"],
+      "vehicles": [
+        {
+          "name": "Main Road",
+          "description": "Vehicle line outside the school compound.",
+          "landmarks": ["front gate", "main road"]
+        }
+      ],
+      "loot": {
+        "quality": "medium-high",
+        "high_tier_buildings": ["main school", "gym", "north houses"],
+        "route": ["loot school", "cross to gym", "rotate main road"],
+        "notes": "Balanced drop for players who want early control without Terminal chaos."
+      },
+      "danger": "medium",
+      "description": "Central school area with stable loot and decent rotations."
+    },
+    {
+      "name": "Ho San",
+      "aliases": ["hosan", "โฮซาน"],
+      "vehicles": [
+        {
+          "name": "West Road",
+          "description": "Use this for coastal or central rotations.",
+          "landmarks": ["west road", "warehouse edge"]
+        },
+        {
+          "name": "South Bridge Road",
+          "description": "Backup spawn when fighting spreads through town.",
+          "landmarks": ["bridge road", "south houses"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["warehouse row", "market block", "river houses"],
+        "route": ["land warehouses", "clear market", "take west road vehicle"],
+        "notes": "Large enough for squad splits but dangerous if teams collapse from both roads."
+      },
+      "danger": "medium-high",
+      "description": "Dense town with strong loot and flexible rotations."
+    },
+    {
+      "name": "Shipyard",
+      "aliases": ["ship yard", "ท่าเรือ"],
+      "vehicles": [
+        {
+          "name": "North Road",
+          "description": "Primary escape route from the shipyard.",
+          "landmarks": ["north cranes", "roadside warehouses"]
+        },
+        {
+          "name": "Dock Road",
+          "description": "Check by the docks if north road is contested.",
+          "landmarks": ["docks", "containers"]
+        }
+      ],
+      "loot": {
+        "quality": "high",
+        "high_tier_buildings": ["shipyard warehouses", "container stacks", "dock offices"],
+        "route": ["drop warehouses", "clear containers", "leave north road"],
+        "notes": "Good loot but rotations can be long if the circle pulls center."
+      },
+      "danger": "medium",
+      "description": "Coastal loot zone with containers and warehouse fights."
+    }
+  ],
+  "secret_rooms": [
+    {
+      "name": "Taego Secret Room",
+      "aliases": ["secret room", "key room", "ห้องลับ", "ห้องกุญแจ"],
+      "locations": ["North of Terminal small warehouse", "Palace hillside compound", "Wol Song locked building", "Shipyard north warehouse", "Ho San east roadside building"],
+      "requirements": "Taego Secret Room Key.",
+      "loot": "Crate-tier weapons, self AED, armor, scopes, meds, and high-value attachments.",
+      "notes": "Keys are rare world spawns; secure a vehicle before detouring."
+    }
+  ],
+  "drops": {
+    "hot": ["Terminal", "Palace", "Ho San center"],
+    "medium": ["School", "Shipyard", "Wol Song"],
+    "safe": ["Fishing Camp", "Buk San Sa edge", "Song Am outskirts", "small rice-field compounds"]
+  }
+}

@@ -31,9 +31,18 @@ def _split_text(text: str) -> list[str]:
 
         if current:
             chunks.append(current)
-        current = block
+        if len(block) <= SAFE_CHUNK_SIZE:
+            current = block
+            continue
+
+        # Very long blocks are rare, but split them without dropping data.
+        start = 0
+        while start < len(block):
+            chunks.append(block[start : start + SAFE_CHUNK_SIZE])
+            start += SAFE_CHUNK_SIZE
+        current = ""
 
     if current:
-        chunks.append(current[:SAFE_CHUNK_SIZE])
+        chunks.append(current)
 
     return chunks
