@@ -130,6 +130,7 @@
     {
       "name": "Taego Secret Room",
       "aliases": ["secret room", "key room", "ห้องลับ", "ห้องกุญแจ"],
+      "image_url": "https://images.steamusercontent.com/ugc/11074162632809260800/65E8498C4EA32F373385C8205551E436A80CC7CA/",
       "locations": [
         "Northwest coast above Wol Song",
         "North of Go Dok, west of Army Base",

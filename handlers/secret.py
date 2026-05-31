@@ -6,7 +6,8 @@ from aiogram.types import Message
 
 from services.search_service import SearchService
 from services.sqlite_service import SQLiteService
-from utils.formatters import format_not_found, format_secret_results, usage
+from utils.formatters import format_not_found, usage
+from utils.secret_responses import answer_secret_matches
 from utils.telegram import answer_text
 from utils.text import command_args
 
@@ -29,16 +30,16 @@ async def secret_command(
         return
 
     matches = search_service.secret(query)
-    response = (
-        format_secret_results(matches)
-        if matches
-        else format_not_found("ห้องลับ/จุดพิเศษ", query, search_service.suggestions(query))
-    )
-
     await sqlite_service.log_query(
         user=message.from_user,
         command="/secret",
         query=query,
         matched_type="secret" if matches else None,
     )
-    await answer_text(message, response)
+    if matches:
+        await answer_secret_matches(message, matches, sqlite_service)
+    else:
+        await answer_text(
+            message,
+            format_not_found("ห้องลับ/จุดพิเศษ", query, search_service.suggestions(query)),
+        )

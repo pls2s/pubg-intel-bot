@@ -10,9 +10,9 @@ from utils.formatters import (
     format_loot_results,
     format_map_overview,
     format_not_found,
-    format_secret_results,
     format_vehicle_results,
 )
+from utils.secret_responses import answer_secret_matches
 from utils.telegram import answer_text
 
 
@@ -45,11 +45,16 @@ async def natural_language_search(
         )
     elif intent == "secret":
         matches = search_service.secret(text)
-        response = (
-            format_secret_results(matches)
-            if matches
-            else format_not_found("ห้องลับ/จุดพิเศษ", text, search_service.suggestions(text))
-        )
+        if matches:
+            await sqlite_service.log_query(
+                user=message.from_user,
+                command="natural_language",
+                query=text,
+                matched_type=matched_type,
+            )
+            await answer_secret_matches(message, matches, sqlite_service)
+            return
+        response = format_not_found("ห้องลับ/จุดพิเศษ", text, search_service.suggestions(text))
     elif intent == "loot":
         matches = search_service.loot(text)
         response = (

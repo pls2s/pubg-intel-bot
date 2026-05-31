@@ -135,6 +135,7 @@
     {
       "name": "Miramar Secret Rooms",
       "aliases": ["secret room", "key room", "mine", "abandoned mine", "ห้องลับ"],
+      "image_url": "https://images.steamusercontent.com/ugc/9866695287589586660/71ED3F8502969C8BF16A57F3BBF65AF7D0BF49E1/",
       "locations": [
         "Crater Fields northwest abandoned mine",
         "La Cobreria southwest ridge",

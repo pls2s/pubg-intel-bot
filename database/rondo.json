@@ -130,6 +130,7 @@
     {
       "name": "Rondo Secret Rooms",
       "aliases": ["secret room", "secured room", "locked room", "pagoda", "round door", "ห้องลับ"],
+      "image_url": "https://images.steamusercontent.com/ugc/12809037901238314162/080102F269CB2FD8C93CE09496AD4494FB1C4843/",
       "locations": [
         "Northwest forest above Jao Tin",
         "Jao Tin north-side pagoda",

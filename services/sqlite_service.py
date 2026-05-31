@@ -42,6 +42,17 @@ class SQLiteService:
                 ON user_queries(created_at)
                 """
             )
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS image_cache (
+                    cache_key TEXT PRIMARY KEY,
+                    image_url TEXT NOT NULL,
+                    file_id TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
+                )
+                """
+            )
 
     async def log_query(
         self,
@@ -86,4 +97,45 @@ class SQLiteService:
                     matched_type,
                     datetime.now(UTC).isoformat(),
                 ),
+            )
+
+    async def get_image_file_id(self, cache_key: str) -> str | None:
+        try:
+            return await asyncio.to_thread(self._get_image_file_id_sync, cache_key)
+        except sqlite3.Error as exc:
+            logger.warning("Could not read Telegram image cache: %s", exc)
+            return None
+
+    def _get_image_file_id_sync(self, cache_key: str) -> str | None:
+        with sqlite3.connect(self.sqlite_path) as conn:
+            row = conn.execute(
+                "SELECT file_id FROM image_cache WHERE cache_key = ?",
+                (cache_key,),
+            ).fetchone()
+        return str(row[0]) if row else None
+
+    async def save_image_file_id(self, *, cache_key: str, image_url: str, file_id: str) -> None:
+        try:
+            await asyncio.to_thread(
+                self._save_image_file_id_sync,
+                cache_key,
+                image_url,
+                file_id,
+            )
+        except sqlite3.Error as exc:
+            logger.warning("Could not save Telegram image cache: %s", exc)
+
+    def _save_image_file_id_sync(self, cache_key: str, image_url: str, file_id: str) -> None:
+        now = datetime.now(UTC).isoformat()
+        with sqlite3.connect(self.sqlite_path) as conn:
+            conn.execute(
+                """
+                INSERT INTO image_cache (cache_key, image_url, file_id, created_at, updated_at)
+                VALUES (?, ?, ?, ?, ?)
+                ON CONFLICT(cache_key) DO UPDATE SET
+                    image_url = excluded.image_url,
+                    file_id = excluded.file_id,
+                    updated_at = excluded.updated_at
+                """,
+                (cache_key, image_url, file_id, now, now),
             )

@@ -112,6 +112,17 @@ def format_secret_results(matches: list[SecretRoomMatch]) -> str:
     return "\n\n".join(blocks)
 
 
+def format_secret_image_caption(match: SecretRoomMatch) -> str:
+    room = match.secret_room
+    lines = [
+        f"แผนที่ตำแหน่ง: {room.name} ({match.map_data.display_name})",
+        f"สิ่งที่ต้องใช้: {room.requirements}",
+        f"จำนวนตำแหน่งในฐานข้อมูล: {len(room.locations)} จุด",
+        format_verification(room.verification),
+    ]
+    return "\n".join(lines)[:1000]
+
+
 def format_loot_results(matches: list[LocationMatch]) -> str:
     blocks: list[str] = []
     for match in matches:

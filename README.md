@@ -48,6 +48,8 @@ Secret room ใน Vikendi อยู่ไหน
 จุดลงเงียบๆใน Erangel
 ```
 
+Secret-room and special-location answers send a map image first when that entry has an `image_url` in JSON. If Telegram cannot load the image, the bot falls back to the normal text answer.
+
 ## Project Structure
 
 ```text
@@ -123,6 +125,8 @@ This keeps the bot deterministic now while leaving a clean place to add AI/NLU l
 ## SQLite
 
 The bot creates `data/pubg_intel.sqlite3` automatically and logs queries into `user_queries`.
+
+It also stores Telegram image `file_id` values in `image_cache`. The first image send uses the configured URL, then later sends reuse Telegram's cached file ID for faster responses.
 
 Map knowledge stays in JSON. SQLite is intentionally used only for persistence/analytics so the knowledge base remains easy to edit and review.
 

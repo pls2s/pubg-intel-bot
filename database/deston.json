@@ -67,6 +67,7 @@
     {
       "name": "Deston Security Rooms",
       "aliases": ["secret room", "security room", "key room", "ห้องลับ"],
+      "image_url": "https://images.steamusercontent.com/ugc/13218018147163945999/27EC5EF3444A078C1FBD4E089AC011ECE954845C/",
       "locations": [
         "Assembly main building, down-marker side",
         "Arena compound",
@@ -88,6 +89,7 @@
     {
       "name": "Deston Pillar Trucks",
       "aliases": ["pillar truck", "security truck", "truck"],
+      "image_url": "https://images.steamusercontent.com/ugc/13218018147163945999/27EC5EF3444A078C1FBD4E089AC011ECE954845C/",
       "locations": [
         "Ten Forts",
         "Carpenter's End",

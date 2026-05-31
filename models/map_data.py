@@ -120,6 +120,7 @@ class SecretRoom:
     requirements: str
     loot: str
     notes: str = ""
+    image_url: str = ""
     aliases: list[str] = field(default_factory=list)
     verification: Verification = field(default_factory=Verification)
 
@@ -131,6 +132,7 @@ class SecretRoom:
             requirements=str(raw.get("requirements", "Unknown")),
             loot=str(raw.get("loot", "Unknown")),
             notes=str(raw.get("notes", "")),
+            image_url=str(raw.get("image_url", "")),
             aliases=[str(item) for item in raw.get("aliases", [])],
             verification=Verification.from_raw(raw.get("verification")),
         )

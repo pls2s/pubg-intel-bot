@@ -125,6 +125,7 @@
     {
       "name": "Vikendi Security Room",
       "aliases": ["secret room", "security room", "ห้องลับ"],
+      "image_url": "https://images.steamusercontent.com/ugc/11119193349568779242/51115C3D40F0471F306D456B7D667085ACB341DD/",
       "locations": [
         "Northwest of Observatory, near the west mountain road",
         "Northeast of Observatory / west of Cosmodrome, beside the bear cave cluster",
