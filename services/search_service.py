@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 from models.map_data import LocationMatch, MapData, SecretRoomMatch
@@ -89,6 +90,7 @@ class SearchService:
         return None
 
     def vehicle(self, query: str, *, max_results: int = 5) -> list[LocationMatch]:
+        query = self._strip_keywords(query, self.VEHICLE_KEYWORDS)
         return self.map_service.find_locations(
             query,
             require_vehicles=True,
@@ -96,14 +98,17 @@ class SearchService:
         )
 
     def loot(self, query: str, *, max_results: int = 5) -> list[LocationMatch]:
+        query = self._strip_keywords(query, self.LOOT_KEYWORDS)
         return self.map_service.find_locations(query, max_results=max_results)
 
     def secret(self, query: str, *, max_results: int = 8) -> list[SecretRoomMatch]:
+        query = self._strip_keywords(query, self.SECRET_KEYWORDS)
         return self.map_service.find_secret_rooms(query, max_results=max_results)
 
     def drop(self, query: str) -> DropLookup:
+        lookup_query = self._strip_keywords(query, self.DROP_KEYWORDS)
         return DropLookup(
-            map_data=self.map_service.find_map(query),
+            map_data=self.map_service.find_map(lookup_query),
             risk_hint=self.extract_risk_hint(query),
         )
 
@@ -126,3 +131,11 @@ class SearchService:
     @staticmethod
     def _contains_any(normalized_text: str, keywords: tuple[str, ...]) -> bool:
         return any(normalize_text(keyword) in normalized_text for keyword in keywords)
+
+    @staticmethod
+    def _strip_keywords(text: str, keywords: tuple[str, ...]) -> str:
+        cleaned = text
+        for keyword in sorted(keywords, key=len, reverse=True):
+            cleaned = re.sub(re.escape(keyword), " ", cleaned, flags=re.IGNORECASE)
+        cleaned = " ".join(cleaned.split())
+        return cleaned or text
