@@ -126,6 +126,24 @@ The bot creates `data/pubg_intel.sqlite3` automatically and logs queries into `u
 
 Map knowledge stays in JSON. SQLite is intentionally used only for persistence/analytics so the knowledge base remains easy to edit and review.
 
+## Data Quality
+
+This project now tracks source quality with optional `verification` blocks on maps, locations, vehicle spawns, loot profiles, secret rooms, and drop recommendations.
+
+Default validation checks that the JSON database can be loaded by the bot:
+
+```bash
+python tools/validate_database.py
+```
+
+Strict Useful-level validation enforces per-entry verification metadata:
+
+```bash
+python tools/validate_database.py --strict-useful
+```
+
+See [docs/pubg-pc-useful-data-plan.md](docs/pubg-pc-useful-data-plan.md) for the PUBG: BATTLEGROUNDS PC data collection checklist and source policy.
+
 ## Notes
 
 The included JSON files are sample production-shaped data. PUBG map rules and secret room mechanics can change by patch, so keep the `database/*.json` files updated with your target PUBG version.

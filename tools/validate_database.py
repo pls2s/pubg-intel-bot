@@ -14,6 +14,7 @@ REQUIRED_VEHICLE_FIELDS = ("name", "description", "landmarks")
 
 
 def main() -> int:
+    strict_useful = "--strict-useful" in sys.argv
     errors: list[str] = []
     for path in sorted(DATABASE_DIR.glob("*.json")):
         if path.parent.name == "templates":
@@ -24,7 +25,7 @@ def main() -> int:
             errors.append(f"{path}: invalid JSON: {exc}")
             continue
 
-        errors.extend(validate_map(path, raw))
+        errors.extend(validate_map(path, raw, strict_useful=strict_useful))
 
     if errors:
         print("Database validation failed:")
@@ -36,7 +37,7 @@ def main() -> int:
     return 0
 
 
-def validate_map(path: Path, raw: dict[str, Any]) -> list[str]:
+def validate_map(path: Path, raw: dict[str, Any], *, strict_useful: bool) -> list[str]:
     errors: list[str] = []
     for field in ("map", "aliases", "locations", "drops", "verification"):
         if field not in raw:
@@ -44,7 +45,8 @@ def validate_map(path: Path, raw: dict[str, Any]) -> list[str]:
 
     for index, location in enumerate(raw.get("locations", [])):
         label = f"{path}: locations[{index}]"
-        for field in REQUIRED_LOCATION_FIELDS:
+        required_location_fields = REQUIRED_LOCATION_FIELDS if strict_useful else REQUIRED_LOCATION_FIELDS[:-1]
+        for field in required_location_fields:
             if field not in location:
                 errors.append(f"{label}: missing '{field}'")
 
@@ -67,7 +69,12 @@ def validate_map(path: Path, raw: dict[str, Any]) -> list[str]:
 
     for index, room in enumerate(raw.get("secret_rooms", [])):
         label = f"{path}: secret_rooms[{index}]"
-        for field in ("name", "locations", "requirements", "loot", "verification"):
+        required_secret_fields = (
+            ("name", "locations", "requirements", "loot", "verification")
+            if strict_useful
+            else ("name", "locations", "requirements", "loot")
+        )
+        for field in required_secret_fields:
             if field not in room:
                 errors.append(f"{label}: missing '{field}'")
 
