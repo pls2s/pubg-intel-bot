@@ -1,5 +1,13 @@
 {
   "map": "Taego",
+  "verification": {
+    "source": "official_pubg_map_page",
+    "confidence": "high",
+    "last_verified": "2026-05-31",
+    "patch": "live site 2026-05-31",
+    "source_url": "https://www.pubg.com/en/game-info/maps/taego",
+    "notes": "Official page verifies map identity, key landmarks, and major features; detailed vehicle/loot routes still require manual in-game verification."
+  },
   "aliases": ["taego", "แทโก"],
   "locations": [
     {
@@ -129,6 +137,13 @@
     }
   ],
   "drops": {
+    "verification": {
+      "source": "common_player_knowledge_seed",
+      "confidence": "low",
+      "last_verified": "2026-05-31",
+      "patch": "needs manual PC live verification",
+      "notes": "Initial tactical estimate, not yet checked against current live drop behavior."
+    },
     "hot": ["Terminal", "Palace", "Ho San center"],
     "medium": ["School", "Shipyard", "Wol Song"],
     "safe": ["Fishing Camp", "Buk San Sa edge", "Song Am outskirts", "small rice-field compounds"]

@@ -1,0 +1,44 @@
+{
+  "name": "Pochinki",
+  "aliases": ["pochinki city", "โพชินกิ", "พอชินกิ"],
+  "vehicles": [
+    {
+      "name": "West Garage",
+      "description": "Garage-side road exit on the west edge of town.",
+      "landmarks": ["west garage", "yellow houses", "road to Gatka"],
+      "grid": "optional grid/callout",
+      "verification": {
+        "source": "manual_pc_live_verification",
+        "confidence": "high",
+        "last_verified": "2026-05-31",
+        "patch": "current PC live",
+        "source_url": "",
+        "notes": "Verified in custom match or live match screenshot."
+      }
+    }
+  ],
+  "loot": {
+    "quality": "high",
+    "high_tier_buildings": ["central two-story houses", "church-side compounds"],
+    "route": ["land central roofs", "clear west garage compound", "rotate using west garage vehicle"],
+    "notes": "Dense loot, high third-party risk.",
+    "verification": {
+      "source": "manual_pc_live_verification",
+      "confidence": "medium",
+      "last_verified": "2026-05-31",
+      "patch": "current PC live",
+      "source_url": "",
+      "notes": "Route validated by current map layout."
+    }
+  },
+  "danger": "high",
+  "description": "Popular hot drop with dense compounds and quick third-party fights.",
+  "verification": {
+    "source": "manual_pc_live_verification",
+    "confidence": "medium",
+    "last_verified": "2026-05-31",
+    "patch": "current PC live",
+    "source_url": "",
+    "notes": "Use high confidence only after current live build verification."
+  }
+}

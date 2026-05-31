@@ -5,10 +5,42 @@ from typing import Any
 
 
 @dataclass(frozen=True)
+class Verification:
+    source: str = "unverified"
+    confidence: str = "low"
+    last_verified: str = ""
+    patch: str = ""
+    source_url: str = ""
+    notes: str = ""
+
+    @classmethod
+    def from_raw(cls, raw: dict[str, Any] | None) -> "Verification":
+        raw = raw or {}
+        return cls(
+            source=str(raw.get("source", "unverified")),
+            confidence=str(raw.get("confidence", "low")),
+            last_verified=str(raw.get("last_verified", "")),
+            patch=str(raw.get("patch", "")),
+            source_url=str(raw.get("source_url", "")),
+            notes=str(raw.get("notes", "")),
+        )
+
+    def label(self) -> str:
+        parts = [f"confidence={self.confidence}"]
+        if self.last_verified:
+            parts.append(f"verified={self.last_verified}")
+        if self.patch:
+            parts.append(f"patch={self.patch}")
+        return ", ".join(parts)
+
+
+@dataclass(frozen=True)
 class VehicleSpawn:
     name: str
     description: str = ""
     landmarks: list[str] = field(default_factory=list)
+    grid: str = ""
+    verification: Verification = field(default_factory=Verification)
 
     @classmethod
     def from_raw(cls, raw: str | dict[str, Any]) -> "VehicleSpawn":
@@ -19,6 +51,8 @@ class VehicleSpawn:
             name=str(raw.get("name", "Unknown spawn")),
             description=str(raw.get("description", "")),
             landmarks=[str(item) for item in raw.get("landmarks", [])],
+            grid=str(raw.get("grid", "")),
+            verification=Verification.from_raw(raw.get("verification")),
         )
 
 
@@ -28,6 +62,7 @@ class LootProfile:
     high_tier_buildings: list[str] = field(default_factory=list)
     route: list[str] = field(default_factory=list)
     notes: str = ""
+    verification: Verification = field(default_factory=Verification)
 
     @classmethod
     def from_raw(cls, raw: str | dict[str, Any] | None) -> "LootProfile":
@@ -41,6 +76,7 @@ class LootProfile:
             high_tier_buildings=[str(item) for item in raw.get("high_tier_buildings", [])],
             route=[str(item) for item in raw.get("route", [])],
             notes=str(raw.get("notes", "")),
+            verification=Verification.from_raw(raw.get("verification")),
         )
 
 
@@ -52,6 +88,7 @@ class Location:
     loot: LootProfile = field(default_factory=LootProfile)
     danger: str = "unknown"
     description: str = ""
+    verification: Verification = field(default_factory=Verification)
 
     @classmethod
     def from_dict(cls, raw: dict[str, Any]) -> "Location":
@@ -68,6 +105,7 @@ class Location:
             loot=LootProfile.from_raw(raw.get("loot")),
             danger=str(raw.get("danger", "unknown")),
             description=str(raw.get("description", "")),
+            verification=Verification.from_raw(raw.get("verification")),
         )
 
     @property
@@ -83,6 +121,7 @@ class SecretRoom:
     loot: str
     notes: str = ""
     aliases: list[str] = field(default_factory=list)
+    verification: Verification = field(default_factory=Verification)
 
     @classmethod
     def from_dict(cls, raw: dict[str, Any]) -> "SecretRoom":
@@ -93,6 +132,7 @@ class SecretRoom:
             loot=str(raw.get("loot", "Unknown")),
             notes=str(raw.get("notes", "")),
             aliases=[str(item) for item in raw.get("aliases", [])],
+            verification=Verification.from_raw(raw.get("verification")),
         )
 
     @property
@@ -105,6 +145,7 @@ class DropRecommendations:
     hot: list[str] = field(default_factory=list)
     medium: list[str] = field(default_factory=list)
     safe: list[str] = field(default_factory=list)
+    verification: Verification = field(default_factory=Verification)
 
     @classmethod
     def from_dict(cls, raw: dict[str, Any] | None) -> "DropRecommendations":
@@ -113,6 +154,7 @@ class DropRecommendations:
             hot=[str(item) for item in raw.get("hot", [])],
             medium=[str(item) for item in raw.get("medium", [])],
             safe=[str(item) for item in raw.get("safe", [])],
+            verification=Verification.from_raw(raw.get("verification")),
         )
 
 
@@ -124,6 +166,7 @@ class MapData:
     locations: list[Location]
     secret_rooms: list[SecretRoom]
     drops: DropRecommendations
+    verification: Verification = field(default_factory=Verification)
 
     @classmethod
     def from_dict(cls, key: str, raw: dict[str, Any]) -> "MapData":
@@ -134,6 +177,7 @@ class MapData:
             locations=[Location.from_dict(item) for item in raw.get("locations", [])],
             secret_rooms=[SecretRoom.from_dict(item) for item in raw.get("secret_rooms", [])],
             drops=DropRecommendations.from_dict(raw.get("drops")),
+            verification=Verification.from_raw(raw.get("verification") or raw.get("metadata")),
         )
 
     @property

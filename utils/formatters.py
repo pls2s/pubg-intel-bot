@@ -1,6 +1,12 @@
 from __future__ import annotations
 
-from models.map_data import LocationMatch, MapData, SecretRoomMatch
+from models.map_data import LocationMatch, MapData, SecretRoomMatch, Verification
+
+
+def format_verification(verification: Verification) -> str:
+    if verification.source == "unverified" and verification.confidence == "low":
+        return "Data quality: unverified"
+    return f"Data quality: {verification.label()}"
 
 
 def usage(command: str, examples: list[str]) -> str:
@@ -28,16 +34,21 @@ def format_vehicle_results(matches: list[LocationMatch]) -> str:
         lines = [
             f"Vehicle spawns for {location.name} ({match.map_data.display_name})",
             f"Danger: {location.danger}",
+            format_verification(location.verification),
         ]
         if location.description:
             lines.append(f"Intel: {location.description}")
         lines.append("")
         for spawn in location.vehicles:
             lines.append(f"- {spawn.name}")
+            if spawn.grid:
+                lines.append(f"  Grid: {spawn.grid}")
             if spawn.description:
                 lines.append(f"  {spawn.description}")
             if spawn.landmarks:
                 lines.append(f"  Landmarks: {', '.join(spawn.landmarks)}")
+            if spawn.verification.source != "unverified":
+                lines.append(f"  {format_verification(spawn.verification)}")
         blocks.append("\n".join(lines))
 
     return "\n\n".join(blocks)
@@ -51,6 +62,7 @@ def format_secret_results(matches: list[SecretRoomMatch]) -> str:
             f"Secret room: {room.name} ({match.map_data.display_name})",
             f"Requirements: {room.requirements}",
             f"Loot: {room.loot}",
+            format_verification(room.verification),
         ]
         if room.notes:
             lines.append(f"Notes: {room.notes}")
@@ -70,6 +82,7 @@ def format_loot_results(matches: list[LocationMatch]) -> str:
             f"Loot intel for {location.name} ({match.map_data.display_name})",
             f"Quality: {loot.quality}",
             f"Danger: {location.danger}",
+            format_verification(loot.verification if loot.verification.source != "unverified" else location.verification),
         ]
         if location.description:
             lines.append(f"Intel: {location.description}")
@@ -92,6 +105,7 @@ def format_loot_results(matches: list[LocationMatch]) -> str:
 def format_drop_recommendation(map_data: MapData, risk_hint: str | None = None) -> str:
     drops = map_data.drops
     lines = [f"Drop recommendations for {map_data.display_name}"]
+    lines.append(format_verification(drops.verification if drops.verification.source != "unverified" else map_data.verification))
     if risk_hint:
         lines.append(f"Focus: {risk_hint}")
     lines.append("")

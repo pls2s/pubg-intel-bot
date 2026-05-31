@@ -1,5 +1,13 @@
 {
   "map": "Miramar",
+  "verification": {
+    "source": "official_pubg_map_page",
+    "confidence": "high",
+    "last_verified": "2026-05-31",
+    "patch": "live site 2026-05-31",
+    "source_url": "https://www.pubg.com/en/game-info/maps/miramar",
+    "notes": "Official page verifies map identity, key landmarks, and major features; detailed vehicle/loot routes still require manual in-game verification."
+  },
   "aliases": ["miramar", "มิรามาร์"],
   "locations": [
     {
@@ -125,6 +133,13 @@
   ],
   "secret_rooms": [],
   "drops": {
+    "verification": {
+      "source": "common_player_knowledge_seed",
+      "confidence": "low",
+      "last_verified": "2026-05-31",
+      "patch": "needs manual PC live verification",
+      "notes": "Initial tactical estimate, not yet checked against current live drop behavior."
+    },
     "hot": ["Pecado", "Hacienda del Patron", "Los Leones center"],
     "medium": ["Power Grid", "San Martin edge", "El Pozo"],
     "safe": ["Valle del Mar", "Impala edge", "La Cobreria outskirts", "coastal compounds"]

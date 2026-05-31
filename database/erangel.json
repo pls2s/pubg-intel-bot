@@ -1,5 +1,13 @@
 {
   "map": "Erangel",
+  "verification": {
+    "source": "official_pubg_map_page",
+    "confidence": "high",
+    "last_verified": "2026-05-31",
+    "patch": "live site 2026-05-31",
+    "source_url": "https://www.pubg.com/en/game-info/maps/erangel",
+    "notes": "Official page verifies map identity, key landmarks, and major features; detailed vehicle/loot routes still require manual in-game verification."
+  },
   "aliases": ["erangel", "เอรันเกล"],
   "locations": [
     {
@@ -168,6 +176,13 @@
     }
   ],
   "drops": {
+    "verification": {
+      "source": "common_player_knowledge_seed",
+      "confidence": "low",
+      "last_verified": "2026-05-31",
+      "patch": "needs manual PC live verification",
+      "notes": "Initial tactical estimate, not yet checked against current live drop behavior."
+    },
     "hot": ["Pochinki", "School", "Sosnovka Military Base", "Georgopol Crates"],
     "medium": ["Rozhok", "Mylta Power", "Yasnaya outskirts"],
     "safe": ["Farm compounds", "Primorsk edge", "Zharki", "Stalber lower compounds"]

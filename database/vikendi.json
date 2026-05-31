@@ -1,5 +1,13 @@
 {
   "map": "Vikendi",
+  "verification": {
+    "source": "official_pubg_map_page",
+    "confidence": "high",
+    "last_verified": "2026-05-31",
+    "patch": "live site 2026-05-31",
+    "source_url": "https://www.pubg.com/en/game-info/maps/vikendi",
+    "notes": "Official page verifies map identity, key landmarks, and Secret Room as a major feature; exact room spots still require manual in-game verification."
+  },
   "aliases": ["vikendi", "วิเคนดิ"],
   "locations": [
     {
@@ -124,6 +132,13 @@
     }
   ],
   "drops": {
+    "verification": {
+      "source": "common_player_knowledge_seed",
+      "confidence": "low",
+      "last_verified": "2026-05-31",
+      "patch": "needs manual PC live verification",
+      "notes": "Initial tactical estimate, not yet checked against current live drop behavior."
+    },
     "hot": ["Villa", "Castle", "Cosmodrome"],
     "medium": ["Dino Park", "Cement Factory", "Winery"],
     "safe": ["Trevno edge", "Milnar outskirts", "Hot Springs compounds", "Dobro Mesto edge"]

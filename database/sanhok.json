@@ -1,5 +1,13 @@
 {
   "map": "Sanhok",
+  "verification": {
+    "source": "official_pubg_map_page",
+    "confidence": "high",
+    "last_verified": "2026-05-31",
+    "patch": "live site 2026-05-31",
+    "source_url": "https://www.pubg.com/en/game-info/maps/sanhok",
+    "notes": "Official page verifies map identity, key landmarks, and major features; detailed vehicle/loot routes still require manual in-game verification."
+  },
   "aliases": ["sanhok", "ซานฮอก"],
   "locations": [
     {
@@ -124,6 +132,13 @@
     }
   ],
   "drops": {
+    "verification": {
+      "source": "common_player_knowledge_seed",
+      "confidence": "low",
+      "last_verified": "2026-05-31",
+      "patch": "needs manual PC live verification",
+      "notes": "Initial tactical estimate, not yet checked against current live drop behavior."
+    },
     "hot": ["Bootcamp", "Paradise Resort", "Ruins"],
     "medium": ["Camp Alpha", "Pai Nan", "Quarry"],
     "safe": ["Kampong", "Docks edge", "Ha Tinh outskirts", "Lakawi coast"]
