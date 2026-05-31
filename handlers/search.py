@@ -5,6 +5,7 @@ from aiogram.types import Message
 
 from services.search_service import SearchService
 from services.sqlite_service import SQLiteService
+from services.zone_service import ZoneService
 from utils.formatters import (
     format_drop_recommendation,
     format_loot_results,
@@ -14,6 +15,7 @@ from utils.formatters import (
 )
 from utils.secret_responses import answer_secret_matches
 from utils.telegram import answer_text
+from utils.zone_responses import answer_zone_prediction
 
 
 router = Router(name="search")
@@ -23,6 +25,7 @@ router = Router(name="search")
 async def natural_language_search(
     message: Message,
     search_service: SearchService,
+    zone_service: ZoneService,
     sqlite_service: SQLiteService,
 ) -> None:
     text = (message.text or "").strip()
@@ -43,6 +46,17 @@ async def natural_language_search(
             if matches
             else format_not_found("จุดเกิดรถ", text, search_service.suggestions(text))
         )
+    elif intent == "zone":
+        prediction = zone_service.predict(text)
+        matched_type = "zone" if prediction.map_data or prediction.phase else None
+        await sqlite_service.log_query(
+            user=message.from_user,
+            command="natural_language",
+            query=text,
+            matched_type=matched_type,
+        )
+        await answer_zone_prediction(message, prediction)
+        return
     elif intent == "secret":
         matches = search_service.secret(text)
         if matches:

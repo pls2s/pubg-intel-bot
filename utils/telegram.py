@@ -4,7 +4,7 @@ import logging
 from typing import TYPE_CHECKING
 
 from aiogram.exceptions import TelegramAPIError
-from aiogram.types import Message
+from aiogram.types import BufferedInputFile, Message
 
 if TYPE_CHECKING:
     from services.sqlite_service import SQLiteService
@@ -61,6 +61,25 @@ async def answer_photo(
             file_id=file_id,
         )
 
+    return True
+
+
+async def answer_photo_bytes(
+    message: Message,
+    image_bytes: bytes,
+    filename: str,
+    caption: str | None = None,
+) -> bool:
+    """Send an in-memory generated image."""
+
+    try:
+        await message.answer_photo(
+            photo=BufferedInputFile(image_bytes, filename=filename),
+            caption=caption,
+        )
+    except TelegramAPIError as exc:
+        logger.warning("Could not send generated image %s: %s", filename, exc)
+        return False
     return True
 
 

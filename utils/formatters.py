@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from models.map_data import LocationMatch, MapData, SecretRoomMatch, Verification
+from models.zone import ZonePhase, ZonePrediction
 
 
 VALUE_TH = {
@@ -171,6 +172,72 @@ def format_drop_recommendation(map_data: MapData, risk_hint: str | None = None) 
         lines.append("")
 
     return "\n".join(lines).strip()
+
+
+def format_zone_prediction(prediction: ZonePrediction) -> str:
+    lines: list[str] = ["ทำนายวง PUBG"]
+
+    if prediction.map_data:
+        lines.append(f"แผนที่: {prediction.map_data.display_name}")
+    else:
+        lines.append("แผนที่: ยังไม่ได้ระบุ")
+
+    if prediction.phase:
+        lines.append(format_zone_phase_line(prediction.phase))
+        lines.append(f"คำแนะนำ phase นี้: {prediction.phase.guidance}")
+    else:
+        lines.append("Phase: ยังไม่ได้ระบุ")
+
+    lines.append(f"ความมั่นใจ: {th_value(prediction.confidence)}")
+
+    if prediction.anchors:
+        lines.append(f"จุดอ้างอิงจากข้อความ: {', '.join(prediction.anchors)}")
+
+    if prediction.candidates:
+        lines.append("")
+        lines.append("พื้นที่ที่น่าจบ/ควรระวัง:")
+        for index, candidate in enumerate(prediction.candidates, start=1):
+            lines.append(f"{index}. {candidate.name} - ประมาณ {candidate.probability}%")
+            lines.append(f"   เหตุผล: {candidate.reason}")
+            lines.append(f"   ควรเล่น: {candidate.action}")
+    else:
+        lines.append("")
+        lines.append("ยังทำนายพื้นที่ไม่ได้ เพราะต้องมีชื่อแผนที่อย่างน้อย")
+
+    if prediction.notes:
+        lines.append("")
+        lines.append("หมายเหตุ:")
+        lines.extend(f"- {note}" for note in prediction.notes)
+
+    return "\n".join(lines)
+
+
+def format_zone_phase_line(phase: ZonePhase) -> str:
+    return (
+        f"Phase {phase.phase}: รอก่อนบีบ {format_duration(phase.wait_seconds)}, "
+        f"บีบ {format_duration(phase.shrink_seconds)}, "
+        f"ดาเมจ {phase.damage_per_second:g} HP/sec"
+    )
+
+
+def format_zone_phase_table(phases: list[ZonePhase]) -> str:
+    lines = ["ข้อมูลวง PUBG ตาม phase"]
+    for phase in phases:
+        lines.append("")
+        lines.append(format_zone_phase_line(phase))
+        lines.append(f"คำแนะนำ: {phase.guidance}")
+    lines.append("")
+    lines.append("ใช้ /zone <map> phase <เลข> <จุดที่วงกิน> เพื่อทำนายพื้นที่วงท้าย")
+    return "\n".join(lines)
+
+
+def format_duration(seconds: int) -> str:
+    minutes, remainder = divmod(seconds, 60)
+    if minutes and remainder:
+        return f"{minutes}น {remainder}วิ"
+    if minutes:
+        return f"{minutes}น"
+    return f"{remainder}วิ"
 
 
 def format_map_overview(match: LocationMatch) -> str:

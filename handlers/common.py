@@ -20,16 +20,19 @@ HELP_TEXT = """PUBG Intel Bot
 /secret <แผนที่> - ค้นหาห้องลับ/จุดพิเศษ
 /loot <สถานที่> - ดูข้อมูล loot และเส้นทางฟาร์ม
 /drop <แผนที่> - แนะนำจุดลง
+/zone <แผนที่/phase/จุดวง> - ดู phase และทำนายวง
 
 ตัวอย่าง:
 /vehicle pochinki
 /secret taego
 /loot school
 /drop erangel
+/zone erangel phase 4 school roz
 where car pochinki
 Secret room ใน Vikendi อยู่ไหน
 ของดีใน School มีอะไร
 จุดลงเงียบๆใน Erangel
+วง 3 Erangel กลางวง School กิน Rozhok
 """
 
 
@@ -43,7 +46,7 @@ async def start_command(message: Message, sqlite_service: SQLiteService) -> None
     )
     await answer_text(
         message,
-        "PUBG Intel Bot พร้อมช่วยหาจุดเกิดรถ ห้องลับ เส้นทาง loot และจุดลงในแต่ละแผนที่\n\n"
+        "PUBG Intel Bot พร้อมช่วยหาจุดเกิดรถ ห้องลับ เส้นทาง loot จุดลง และ pattern วงในแต่ละแผนที่\n\n"
         "พิมพ์ /help เพื่อดูตัวอย่างคำสั่ง",
     )
 

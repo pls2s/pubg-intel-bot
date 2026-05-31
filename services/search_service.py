@@ -94,6 +94,22 @@ class SearchService:
     SAFE_KEYWORDS = ("safe", "quiet", "low risk", "เงียบ", "ปลอดภัย", "คนน้อย")
     HOT_KEYWORDS = ("hot", "fight", "high risk", "ร้อน", "เสี่ยง", "คนเยอะ")
     MEDIUM_KEYWORDS = ("medium", "balanced", "กลาง", "ปานกลาง")
+    ZONE_KEYWORDS = (
+        "zone",
+        "circle",
+        "blue",
+        "bluezone",
+        "safe zone",
+        "phase",
+        "predict zone",
+        "วง",
+        "วงบีบ",
+        "วงท้าย",
+        "วงสุดท้าย",
+        "ทำนายวง",
+        "เฟส",
+        "บลูโซน",
+    )
 
     def __init__(self, map_service: MapService) -> None:
         self.map_service = map_service
@@ -105,6 +121,7 @@ class SearchService:
 
         # Specific intents are checked before broader loot/drop language.
         checks = (
+            ("zone", self.ZONE_KEYWORDS),
             ("secret", self.SECRET_KEYWORDS),
             ("vehicle", self.VEHICLE_KEYWORDS),
             ("drop", self.DROP_KEYWORDS),

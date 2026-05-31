@@ -7,10 +7,11 @@ from aiogram import Bot, Dispatcher
 from aiogram.types import BotCommand
 
 from config import Settings
-from handlers import common, drop, loot, search, secret, vehicle
+from handlers import common, drop, loot, search, secret, vehicle, zone
 from services.map_service import MapService
 from services.search_service import SearchService
 from services.sqlite_service import SQLiteService
+from services.zone_service import ZoneService
 
 
 async def main() -> None:
@@ -22,6 +23,7 @@ async def main() -> None:
 
     map_service = MapService(settings.database_dir)
     search_service = SearchService(map_service)
+    zone_service = ZoneService(map_service)
     sqlite_service = SQLiteService(settings.sqlite_path)
     await sqlite_service.init()
 
@@ -34,6 +36,7 @@ async def main() -> None:
             BotCommand(command="secret", description="ค้นหาห้องลับ/จุดพิเศษ"),
             BotCommand(command="loot", description="ดูข้อมูล loot"),
             BotCommand(command="drop", description="แนะนำจุดลง"),
+            BotCommand(command="zone", description="ดู phase และทำนายวง"),
         ]
     )
     dp = Dispatcher()
@@ -44,6 +47,7 @@ async def main() -> None:
     dp.include_router(secret.router)
     dp.include_router(loot.router)
     dp.include_router(drop.router)
+    dp.include_router(zone.router)
     dp.include_router(search.router)
 
     logging.info("PUBG Intel Bot started with %d maps loaded.", len(map_service.maps))
@@ -51,6 +55,7 @@ async def main() -> None:
         bot,
         map_service=map_service,
         search_service=search_service,
+        zone_service=zone_service,
         sqlite_service=sqlite_service,
     )
 

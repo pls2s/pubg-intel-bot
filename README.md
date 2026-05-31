@@ -1,11 +1,12 @@
 # PUBG Intel Bot
 
-Telegram bot for fast PUBG map knowledge lookup: vehicle spawns, secret rooms, loot routes, and drop recommendations.
+Telegram bot for fast PUBG map knowledge lookup: vehicle spawns, secret rooms, loot routes, drop recommendations, and zone prediction.
 
 ## Stack
 
 - Python 3.12
 - aiogram v3
+- Pillow for generated prediction images
 - SQLite for query logs
 - JSON map database
 - Environment variables with `.env`
@@ -33,6 +34,7 @@ python bot.py
 - `/secret <map>` - secret room lookup
 - `/loot <location>` - loot intelligence
 - `/drop <map>` - drop recommendations
+- `/zone <map/phase/current circle hints>` - phase info and rule-based final-zone prediction
 
 Examples:
 
@@ -41,11 +43,13 @@ Examples:
 /secret taego
 /loot school
 /drop erangel
+/zone erangel phase 4 school roz
 where car pochinki
 รถแถว Pochinki อยู่ตรงไหน
 Secret room ใน Vikendi อยู่ไหน
 ของดีใน School มีอะไร
 จุดลงเงียบๆใน Erangel
+วง 3 Erangel กลางวง School กิน Rozhok
 ```
 
 Secret-room and special-location answers send a map image first when that entry has an `image_url` in JSON. If Telegram cannot load the image, the bot falls back to the normal text answer.
@@ -64,6 +68,7 @@ pubg-intel-bot/
 │   ├── taego.json
 │   └── rondo.json
 ├── handlers/
+│   ├── zone.py
 ├── models/
 ├── services/
 ├── utils/
@@ -117,10 +122,30 @@ The loader also supports the compact single-location example from the prompt by 
 `SearchService` is keyword-first:
 
 - English and Thai intent keywords identify `vehicle`, `secret`, `loot`, and `drop`.
+- Zone keywords identify `zone` / `circle` / `phase` / `วง` / `ทำนายวง`.
 - `MapService` performs fuzzy matching with aliases, token overlap, and spelling-tolerant similarity.
 - Natural-language messages are handled by `handlers/search.py`.
 
 This keeps the bot deterministic now while leaving a clean place to add AI/NLU later.
+
+## Zone Prediction
+
+`/zone` is a rule-based assistant that sends a generated prediction image plus detailed Thai text. It does not know the server's next circle, but it can estimate likely endgame areas from:
+
+- map name
+- current phase
+- landmarks mentioned by the player
+- direction hints such as north/south/center/edge/water
+
+Examples:
+
+```text
+/zone phase 5
+/zone erangel phase 4 school roz
+วง 3 Erangel กลางวง School กิน Rozhok
+```
+
+The current image is a schematic heatmap. The next upgrade path is replacing the schematic background with real map assets and drawing the same candidate areas as overlays.
 
 ## SQLite
 
