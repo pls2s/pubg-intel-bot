@@ -130,12 +130,37 @@ class SearchService:
 
     @staticmethod
     def _contains_any(normalized_text: str, keywords: tuple[str, ...]) -> bool:
-        return any(normalize_text(keyword) in normalized_text for keyword in keywords)
+        return any(SearchService._contains_keyword(normalized_text, keyword) for keyword in keywords)
 
     @staticmethod
     def _strip_keywords(text: str, keywords: tuple[str, ...]) -> str:
         cleaned = text
         for keyword in sorted(keywords, key=len, reverse=True):
-            cleaned = re.sub(re.escape(keyword), " ", cleaned, flags=re.IGNORECASE)
+            cleaned = re.sub(
+                SearchService._keyword_pattern(keyword),
+                " ",
+                cleaned,
+                flags=re.IGNORECASE,
+            )
         cleaned = " ".join(cleaned.split())
         return cleaned or text
+
+    @staticmethod
+    def _contains_keyword(normalized_text: str, keyword: str) -> bool:
+        keyword_norm = normalize_text(keyword)
+        if not keyword_norm:
+            return False
+        if SearchService._is_ascii_keyword(keyword_norm):
+            return re.search(SearchService._keyword_pattern(keyword_norm), normalized_text) is not None
+        return keyword_norm in normalized_text
+
+    @staticmethod
+    def _keyword_pattern(keyword: str) -> str:
+        escaped = re.escape(keyword)
+        if SearchService._is_ascii_keyword(keyword):
+            return rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])"
+        return escaped
+
+    @staticmethod
+    def _is_ascii_keyword(keyword: str) -> bool:
+        return bool(re.fullmatch(r"[A-Za-z0-9_ ]+", keyword))

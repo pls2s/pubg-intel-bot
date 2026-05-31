@@ -115,9 +115,20 @@ class MapService:
         if not query_norm:
             return []
 
+        map_scores = {
+            map_data.key: max(similarity(query, term) for term in map_data.searchable_terms)
+            for map_data in self.maps.values()
+        }
+        strong_map_matches = {
+            key for key, score in map_scores.items() if score >= 0.86
+        }
+
         matches: list[SecretRoomMatch] = []
         for map_data in self.maps.values():
-            map_score = max(similarity(query, term) for term in map_data.searchable_terms)
+            if strong_map_matches and map_data.key not in strong_map_matches:
+                continue
+
+            map_score = map_scores[map_data.key]
             map_matched = map_score >= 0.86
 
             for secret_room in map_data.secret_rooms:
