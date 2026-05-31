@@ -4,8 +4,9 @@ import re
 from dataclasses import dataclass
 
 from models.map_data import Location, MapData
-from models.zone import ZoneCandidate, ZonePhase, ZonePrediction
+from models.zone import ZoneCandidate, ZoneImagePrediction, ZonePhase, ZonePrediction
 from services.map_service import MapService
+from services.zone_image_analysis import analyze_zone_image
 from utils.text import normalize_text, similarity
 
 
@@ -414,6 +415,10 @@ class ZoneService:
             confidence=confidence,
             notes=notes,
         )
+
+    def predict_from_image(self, image_bytes: bytes, caption: str = "") -> ZoneImagePrediction:
+        phase = self.phase_for_text(caption)
+        return analyze_zone_image(image_bytes, phase)
 
     def phase_for_text(self, text: str) -> ZonePhase | None:
         match = self.PHASE_RE.search(text)

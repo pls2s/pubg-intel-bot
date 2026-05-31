@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from models.map_data import LocationMatch, MapData, SecretRoomMatch, Verification
-from models.zone import ZonePhase, ZonePrediction
+from models.zone import ZoneImagePrediction, ZonePhase, ZonePrediction
 
 
 VALUE_TH = {
@@ -212,6 +212,58 @@ def format_zone_prediction(prediction: ZonePrediction) -> str:
     return "\n".join(lines)
 
 
+def format_zone_image_prediction(prediction: ZoneImagePrediction) -> str:
+    lines = ["ทำนายวงจากรูป PUBG"]
+
+    if prediction.final_center_x is None or prediction.final_center_y is None:
+        lines.append("ผลลัพธ์: ยังหาวงจากรูปไม่ได้")
+    else:
+        x_percent = round(prediction.final_center_x / max(1, prediction.image_width) * 100)
+        y_percent = round(prediction.final_center_y / max(1, prediction.image_height) * 100)
+        lines.append(
+            "จุดที่คาดว่าวงสุดท้ายจะจบ: "
+            f"{_image_area_label(x_percent, y_percent)} "
+            f"(X {x_percent}% จากซ้าย, Y {y_percent}% จากบน)"
+        )
+        if prediction.final_radius:
+            lines.append(f"รัศมีวงท้ายโดยประมาณบนรูป: {prediction.final_radius}px")
+
+    if prediction.phase:
+        lines.append(format_zone_phase_line(prediction.phase))
+    else:
+        lines.append("Phase: ยังไม่ได้ระบุ")
+
+    if prediction.trend:
+        lines.append(f"แนวโน้มวงดึง: {prediction.trend}")
+
+    lines.append(f"ความมั่นใจ: {th_value(prediction.confidence)}")
+    lines.append(f"วิธีวิเคราะห์: {_analysis_source_th(prediction.analysis_source)}")
+
+    if prediction.ai_summary:
+        lines.append(f"{_ai_label_th(prediction.analysis_source)}อ่านบริบท: {prediction.ai_summary}")
+    if prediction.ai_tactical_note:
+        lines.append(f"คำแนะนำจากบริบท: {prediction.ai_tactical_note}")
+
+    if prediction.circles:
+        lines.append("")
+        lines.append("วงที่ตรวจพบในรูป:")
+        for index, circle in enumerate(prediction.circles[:3], start=1):
+            x_percent = round(circle.center_x / max(1, prediction.image_width) * 100)
+            y_percent = round(circle.center_y / max(1, prediction.image_height) * 100)
+            lines.append(
+                f"{index}. {_circle_kind_th(circle.kind)} "
+                f"กลาง X {x_percent}% / Y {y_percent}%, "
+                f"รัศมี {circle.radius}px"
+            )
+
+    if prediction.notes:
+        lines.append("")
+        lines.append("หมายเหตุ:")
+        lines.extend(f"- {note}" for note in prediction.notes)
+
+    return "\n".join(lines)
+
+
 def format_zone_phase_line(phase: ZonePhase) -> str:
     return (
         f"Phase {phase.phase}: รอก่อนบีบ {format_duration(phase.wait_seconds)}, "
@@ -238,6 +290,49 @@ def format_duration(seconds: int) -> str:
     if minutes:
         return f"{minutes}น"
     return f"{remainder}วิ"
+
+
+def _circle_kind_th(kind: str) -> str:
+    if kind == "safe":
+        return "วงขาว/ safe zone"
+    if kind == "blue":
+        return "วงฟ้า/ blue zone"
+    return "วงที่ตรวจพบ"
+
+
+def _image_area_label(x_percent: int, y_percent: int) -> str:
+    horizontal = "กลาง"
+    vertical = "กลาง"
+
+    if x_percent < 34:
+        horizontal = "ซ้าย"
+    elif x_percent > 66:
+        horizontal = "ขวา"
+
+    if y_percent < 34:
+        vertical = "บน"
+    elif y_percent > 66:
+        vertical = "ล่าง"
+
+    if horizontal == "กลาง" and vertical == "กลาง":
+        return "ช่วงกลางรูป"
+    if horizontal == "กลาง":
+        return f"ช่วง{vertical}กลางของรูป"
+    if vertical == "กลาง":
+        return f"ช่วง{horizontal}กลางของรูป"
+    return f"ช่วง{vertical}{horizontal}ของรูป"
+
+
+def _analysis_source_th(source: str) -> str:
+    if source == "Gemini-assisted":
+        return "Gemini-assisted + rule-based"
+    return "rule-based"
+
+
+def _ai_label_th(source: str) -> str:
+    if source == "Gemini-assisted":
+        return "Gemini "
+    return "AI "
 
 
 def format_map_overview(match: LocationMatch) -> str:

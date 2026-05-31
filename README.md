@@ -7,6 +7,7 @@ Telegram bot for fast PUBG map knowledge lookup: vehicle spawns, secret rooms, l
 - Python 3.12
 - aiogram v3
 - Pillow for generated prediction images
+- Gemini API for optional AI-assisted image context
 - SQLite for query logs
 - JSON map database
 - Environment variables with `.env`
@@ -20,7 +21,7 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Edit `.env` and set `BOT_TOKEN` from BotFather.
+Edit `.env` and set `BOT_TOKEN` from BotFather. To enable Gemini-assisted screenshot analysis, also set `GEMINI_API_KEY` from Google AI Studio.
 
 ```bash
 python bot.py
@@ -35,6 +36,7 @@ python bot.py
 - `/loot <location>` - loot intelligence
 - `/drop <map>` - drop recommendations
 - `/zone <map/phase/current circle hints>` - phase info and rule-based final-zone prediction
+- `/zonepic` - show how to send a map screenshot for image-based final-zone prediction, with optional AI assistance
 
 Examples:
 
@@ -44,6 +46,7 @@ Examples:
 /loot school
 /drop erangel
 /zone erangel phase 4 school roz
+/zonepic
 where car pochinki
 รถแถว Pochinki อยู่ตรงไหน
 Secret room ใน Vikendi อยู่ไหน
@@ -125,6 +128,7 @@ The loader also supports the compact single-location example from the prompt by 
 - Zone keywords identify `zone` / `circle` / `phase` / `วง` / `ทำนายวง`.
 - `MapService` performs fuzzy matching with aliases, token overlap, and spelling-tolerant similarity.
 - Natural-language messages are handled by `handlers/search.py`.
+- Photo/image-document messages are handled by `handlers/zone.py` and analyzed as zone screenshots.
 
 This keeps the bot deterministic now while leaving a clean place to add AI/NLU later.
 
@@ -146,6 +150,48 @@ Examples:
 ```
 
 The current image is a schematic heatmap. The next upgrade path is replacing the schematic background with real map assets and drawing the same candidate areas as overlays.
+
+## Image-Based Zone Prediction
+
+Send a map screenshot/photo that clearly shows the PUBG circle. The bot also accepts image files sent as Telegram documents. It detects white safe-zone and blue-zone circle lines, estimates the likely final-circle point on the uploaded image, and returns an overlay with the predicted endpoint.
+
+Recommended captions:
+
+```text
+/zonepic erangel phase 4
+ทำนายวง phase 5
+วง 4
+```
+
+This is a heuristic from pixels in the image, not server circle data. It works best when the map is cropped clearly and the circle lines are visible.
+
+### Optional Gemini Assistance
+
+Set these environment variables to let Gemini vision refine the screenshot result:
+
+```env
+GEMINI_API_KEY=...
+GEMINI_ZONE_MODEL=gemini-2.5-flash
+GEMINI_TIMEOUT_SECONDS=30
+```
+
+When enabled, the bot still runs the rule-based circle detector first, then sends the screenshot plus detected-circle summary to the Gemini API. The AI result is used as a context-aware refinement and the response will show `Gemini-assisted + rule-based`. If the API call fails, the bot falls back to rule-based output.
+
+The default `gemini-2.5-flash` model has a Gemini API free tier, subject to Google's current quota limits. Google's free tier may use submitted content to improve its products; use a paid tier/project if that is not acceptable for your deployment.
+
+Local Gemini test:
+
+```bash
+python tools/generate_zone_test_image.py
+python tools/test_gemini_zone_image.py --generate
+```
+
+The generated files are ignored by git:
+
+```text
+data/test-zone-screenshot.png
+data/test-zone-overlay.png
+```
 
 ## SQLite
 

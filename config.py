@@ -18,6 +18,9 @@ class Settings:
     database_dir: Path
     sqlite_path: Path
     log_level: str = "INFO"
+    gemini_api_key: str = ""
+    gemini_zone_model: str = "gemini-2.5-flash"
+    gemini_timeout_seconds: int = 30
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -40,4 +43,14 @@ class Settings:
             database_dir=database_dir,
             sqlite_path=sqlite_path,
             log_level=os.getenv("LOG_LEVEL", "INFO").upper(),
+            gemini_api_key=os.getenv("GEMINI_API_KEY", "").strip(),
+            gemini_zone_model=os.getenv("GEMINI_ZONE_MODEL", "gemini-2.5-flash").strip() or "gemini-2.5-flash",
+            gemini_timeout_seconds=_int_env("GEMINI_TIMEOUT_SECONDS", 30),
         )
+
+
+def _int_env(name: str, default: int) -> int:
+    try:
+        return int(os.getenv(name, str(default)))
+    except ValueError:
+        return default

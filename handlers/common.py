@@ -21,6 +21,7 @@ HELP_TEXT = """PUBG Intel Bot
 /loot <สถานที่> - ดูข้อมูล loot และเส้นทางฟาร์ม
 /drop <แผนที่> - แนะนำจุดลง
 /zone <แผนที่/phase/จุดวง> - ดู phase และทำนายวง
+/zonepic - วิธีส่งรูปแผนที่เพื่อทำนายวงท้าย รองรับ Gemini ถ้าตั้งค่าไว้
 
 ตัวอย่าง:
 /vehicle pochinki
@@ -28,11 +29,13 @@ HELP_TEXT = """PUBG Intel Bot
 /loot school
 /drop erangel
 /zone erangel phase 4 school roz
+/zonepic แล้วส่งรูปแผนที่พร้อม caption: phase 4
 where car pochinki
 Secret room ใน Vikendi อยู่ไหน
 ของดีใน School มีอะไร
 จุดลงเงียบๆใน Erangel
 วง 3 Erangel กลางวง School กิน Rozhok
+ส่งรูปวงในแผนที่เข้ามา เพื่อให้บอทคาดจุดจบวงท้าย
 """
 
 
