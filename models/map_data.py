@@ -55,8 +55,14 @@ class Location:
 
     @classmethod
     def from_dict(cls, raw: dict[str, Any]) -> "Location":
+        # Accept both the production schema ("name") and the compact example
+        # schema from the prompt ("location").
+        name = raw.get("name") or raw.get("location")
+        if not name:
+            raise ValueError("Location entry must contain 'name' or 'location'.")
+
         return cls(
-            name=str(raw["name"]),
+            name=str(name),
             aliases=[str(item) for item in raw.get("aliases", [])],
             vehicles=[VehicleSpawn.from_raw(item) for item in raw.get("vehicles", [])],
             loot=LootProfile.from_raw(raw.get("loot")),
